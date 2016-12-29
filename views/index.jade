@@ -1,0 +1,15 @@
+extends layout
+
+block body
+  div
+    h2 My Blog
+    ul
+      li
+        a( href='/' ) Home
+      li
+        a( href='/addPost' ) Add a new post
+
+    div(ng-view)
+
+  script( src='js/lib/angular/angular.js' )
+  script( src='js/angular-app.js' )

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="octoapp">
+  <head>
+    <title><%= title %></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"></link>
+
+    <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
+
+    <script type="text/javascript" src="/public/js/angular-app.js"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head>
+  <body ng-controller="octoController">
+    <h1><%= title %></h1>
+
+    <div class="container-fluid">
+
+    	<button ng-click="tripStacktrace()">Trigger Stacktrace</button>
+	
+	</div>
+
+  </body>
+</html>
