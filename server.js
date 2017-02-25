@@ -1,5 +1,6 @@
 var express = require('express');
 var winston = require( 'winston' );
+var bodyParser = require('body-parser');
 
 var app = express();
 var dataFile = require( './data/data.json' );
@@ -10,9 +11,11 @@ app.set( 'view engine', 'ejs' );
 app.set( 'views', 'views' );
 
 
+app.use( bodyParser.json() );
 
 app.use( require( './routes/index' ) );
 app.use( require( './routes/stacktracer' ) );
+app.use( require( './routes/spikecpu' ) );
 app.use( '/public', express.static( __dirname + '/views/public' ) );
 
 
@@ -23,9 +26,15 @@ app.locals.logger = new (winston.Logger)({
 	]
 });
 
-app.locals.stacktracer = new (winston.Logger)({
+app.locals.stacktraceLogger = new (winston.Logger)({
 	transports: [
 		new (winston.transports.File)({ filename: __dirname + '/logs/stacktraces.log' })
+	]
+});
+
+app.locals.spikecpuLogger = new (winston.Logger)({
+	transports: [
+		new (winston.transports.File)({ filename: __dirname + '/logs/spikecpu.log' })
 	]
 });
 

@@ -9,6 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-messages.js"></script>
+
 
     <script type="text/javascript" src="/public/js/angular-app.js"></script>
 
@@ -19,10 +21,43 @@
     <h1><%= title %></h1>
 
     <div class="container-fluid">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Trigger Stacktrace</td>
+            <td>
+              <form name="stacktrace">
+                <button name="tripStacktrace" ng-model="tripStacktrace" ng-click="tripStacktrace()" class="btn btn-primary">Trigger Stacktrace</button>
+                <div ng-messages="stacktrace.tripStacktrace.$error" role="alert">
+                  <div ng-message="submitted">Successfully wrote stack trace to ./logs/stacktrace.log</div>
+                  <div ng-message="error">Error writing stack trace</div>
+                </div>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td>CPU Spike</td>
+            <td>
+              <form name="cpuspike" class="form-inline">
+              <div class="form-group">
+                <label class="sr-only" for="spikeCPUseconds"># sec to spike CPU</label>
+                <input ng-model="spikeCPUseconds" size="18" type="number" class="form-control" id="spikeCPUseconds" placeholder="# sec to spike CPU">
 
-    	<button ng-click="tripStacktrace()">Trigger Stacktrace</button>
-	
-	</div>
+                <button name="cpuspikebutton" ng-click="spikeCPU()" class="btn btn-primary">Spike</button>
+              </div>
+
+                <div ng-messages="cpuspike.cpuspikebutton.$error" role="alert">
+                  <div ng-message="submitted">Starting spike for {{$scope.spikeCPUseconds}}</div>
+                  <div ng-message="finished">Finished spike</div>
+                </div>
+
+              </form>
+            </td>
+          </tr>
+	      </tbody>
+      </table>
+	 </div>
+
 
   </body>
 </html>
