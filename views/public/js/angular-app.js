@@ -50,6 +50,14 @@ octoapp.controller( 'octoController', function( $scope, $http ){
 	$scope.spikeCPU = function() {
 
 		console.log( 'SpikeCPU: ' + $scope.spikeCPUseconds );
+
+
+			$scope.cpuspike.cpuspikebutton.$error = {
+				submitted: true,
+				finished: false
+			};
+
+
 		var postData = {
 			seconds: $scope.spikeCPUseconds
 		};
@@ -60,9 +68,17 @@ octoapp.controller( 'octoController', function( $scope, $http ){
 		.then( function() {  // success
 			console.log( 'Successful post!' );
 			$scope.cpuspike.cpuspikebutton.$error = {
-				submitted: true,
-				finished: false
+				submitted: false,
+				finished: true
 			};
+
+			setTimeout( function() { 
+    			$scope.cpuspike.cpuspikebutton.$error = {
+					submitted: false,
+					finished: false
+				};
+  			}, 10*1000);
+
 
 		}, function() {  // error
 			console.log( 'Error posting!' );
