@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html ng-app="octoapp">
   <head>
+    <style>
+      .row.extra-bottom-padding{
+        margin-bottom: 20px;
+      }
+    </style>
     <title><%= title %></title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"></link>
@@ -21,11 +26,11 @@
     <h1><%= title %></h1>
 
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-2">
+      <div class="row extra-bottom-padding">
+        <!-- <div class="col-md-1">
             Trigger Stacktrace
-        </div>
-        <div class="col-md-2">
+        </div> -->
+        <div class="col-md-3">
               <form name="stacktrace">
                 <button name="tripStacktrace" ng-model="tripStacktrace" ng-click="tripStacktrace()" class="btn btn-primary">Trigger Stacktrace</button>
                 <div ng-messages="stacktrace.tripStacktrace.$error" role="alert">
@@ -35,11 +40,11 @@
               </form>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-2">
+      <div class="row extra-bottom-padding">
+        <!-- <div class="col-md-1">
           CPU Spike
-        </div>
-        <div class="col-md-2">
+        </div> -->
+        <div class="col-md-3">
         
               <form name="cpuspike" class="form-inline">
               <div class="form-group">

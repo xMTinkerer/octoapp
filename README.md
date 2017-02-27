@@ -3,7 +3,9 @@ It does stuff.
 I should update this file. 
 
 
-It dumps stack traces to a log file. 
+# Features
+1. Dump a stack trace to `./logs/stacktraces.log`
+2. Spike the CPU for N seconds
 
 # Installation Requirements
 * Do some git stuff
@@ -22,4 +24,4 @@ Per the `package.json`, just fire up:
 npm start
 ```
 
-Then navigate your browser to `http://localhost:9988` and click the button. 
+Then navigate your browser to `http://localhost:9988` and pick a button. 
