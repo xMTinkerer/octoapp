@@ -8,9 +8,8 @@ I should update this file.
 2. Spike the CPU for N seconds
 
 # Installation Requirements
-* Do some git stuff
+* git
 * node and npm
-* nodemon
 
 ```
 git clone https://github.com/xMTinkerer/octoapp.git
