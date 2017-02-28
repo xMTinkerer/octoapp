@@ -10,6 +10,7 @@ I should update this file.
 # Installation Requirements
 * git
 * node and npm
+* nodemon
 
 ```
 git clone https://github.com/xMTinkerer/octoapp.git
