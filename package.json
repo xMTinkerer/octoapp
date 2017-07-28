@@ -13,8 +13,8 @@
     "body-parser": "^1.15.2",
     "ejs": "^2.5.5",
     "express": "^4.14.0",
+    "nodemon": "^1.11.0",
     "promise": "^7.1.1",
-    "winston": "^2.3.0",
-    "nodemon": "^1.11.0"
+    "winston": "^2.3.0"
   }
 }
