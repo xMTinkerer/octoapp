@@ -2,7 +2,6 @@ var express = require('express');
 var winston = require( 'winston' );
 var bodyParser = require('body-parser');
 
-// updates here
 
 var app = express();
 var dataFile = require( './data/data.json' );
