@@ -5,6 +5,8 @@
       .row.extra-bottom-padding{
         margin-bottom: 20px;
       }
+      [class*="span"] { background: #EEF; }
+      [class*="span"] [class*="span"] { background: #FEE; }
     </style>
     <title><%= title %></title>
 
@@ -23,47 +25,46 @@
 
   </head>
   <body ng-controller="octoController">
-    <img src="/public/img/_Final_xM_Octo-Logo-01.png" width="200" height="200" align="right">
-
-    <h1><%= title %></h1>
 
     <div class="container-fluid">
-      <div class="row extra-bottom-padding">
-        <!-- <div class="col-md-1">
-            Trigger Stacktrace
-        </div> -->
-        <div class="col-md-3">
-              <form name="stacktrace">
-                <button name="tripStacktrace" ng-model="tripStacktrace" ng-click="tripStacktrace()" class="btn btn-primary">Trigger Stacktrace</button>
-                <div ng-messages="stacktrace.tripStacktrace.$error" role="alert">
-                  <div ng-message="submitted">Successfully wrote stack trace to ./logs/stacktrace.log</div>
-                  <div ng-message="error">Error writing stack trace</div>
-                </div>
-              </form>
+      <div class="row">
+        <div class="col-md-6">
+          <h1><%= title %><img src="/public/img/_Final_xM_Octo-Logo-01.png" width="100" height="100" align="center"></h1>
         </div>
       </div>
-      <div class="row extra-bottom-padding">
-        <!-- <div class="col-md-1">
-          CPU Spike
-        </div> -->
-        <div class="col-md-3">
-        
-              <form name="cpuspike" class="form-inline">
+
+        <div class="row extra-bottom-padding">
+          <div class="col-md-3">
+                <form name="stacktrace">
+                  <button name="tripStacktrace" ng-model="tripStacktrace" ng-click="tripStacktrace()" class="btn btn-primary">Trigger Stacktrace</button>
+                  <div ng-messages="stacktrace.tripStacktrace.$error" role="alert">
+                    <div ng-message="submitted">Successfully wrote stack trace to ./logs/stacktrace.log</div>
+                    <div ng-message="error">Error writing stack trace</div>
+                  </div>
+                </form>
+          </div>
+        </div>
+        <div class="row extra-bottom-padding">
+          <div class="col-md-3">
+          
+            <form name="cpuspike" class="form-inline">
               <div class="form-group">
                 <label class="sr-only" for="spikeCPUseconds"># sec to spike CPU</label>
                 <input ng-model="spikeCPUseconds" size="18" type="number" class="form-control" id="spikeCPUseconds" placeholder="# sec to spike CPU">
-
+  
                 <button name="cpuspikebutton" ng-model="cpuspikebutton" ng-click="spikeCPU()" class="btn btn-primary">Spike</button>
               </div>
-
-                <div ng-messages="cpuspike.cpuspikebutton.$error" role="alert">
-                  <div ng-message="submitted" class="bg-success">Starting spike for {{spikeCPUseconds}} seconds</div>
-                  <div ng-message="finished" class="bg-info">Finished spike</div>
-                </div>
-
-              </form>
+  
+              <div ng-messages="cpuspike.cpuspikebutton.$error" role="alert">
+                <div ng-message="submitted" class="bg-success">Starting spike for {{spikeCPUseconds}} seconds</div>
+                <div ng-message="finished" class="bg-info">Finished spike</div>
+              </div>
+  
+            </form>
+          </div>
         </div>
-	 </div>
+        
+    </div>
 
 
   </body>
