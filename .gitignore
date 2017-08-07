@@ -1,3 +1,6 @@
 node_modules
 npm-debug.log
-logs/*
+logs/*.log
+octoapp.sh
+screen.conf
+screenlog.0
