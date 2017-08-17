@@ -2,6 +2,20 @@ var express = require('express');
 var winston = require( 'winston' );
 var bodyParser = require('body-parser');
 
+const promClient = require( 'prom-client' );
+const register = promClient.register;
+
+const Gauge = promClient.Gauge;
+const someMetric = new Gauge({
+     name: 'some_gauge',
+     help: 'A gauge that has data', 
+     labelNames: ['code']
+});
+
+// Set to some initial value
+someMetric.set( 10 );
+
+promClient.collectDefaultMetrics();
 
 
 var app = express();
@@ -15,11 +29,16 @@ app.set( 'views', 'views' );
 
 app.use( bodyParser.json() );
 
-app.use( require( './routes/index' ) );
+app.use( require( './routes/index'       ) );
 app.use( require( './routes/stacktracer' ) );
-app.use( require( './routes/spikecpu' ) );
+app.use( require( './routes/spikecpu'    ) );
+app.use( require( './routes/metricmaker' ) );
+
 app.use( '/public', express.static( __dirname + '/views/public' ) );
 
+// Expose the register to the routes
+app.locals.register   = register;
+app.locals.someMetric = someMetric;
 
 app.locals.logger = new (winston.Logger)({
 	"transports": [

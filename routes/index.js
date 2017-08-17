@@ -10,4 +10,12 @@ router.get('/', function(req, res) {
 
 });
 
+router.get( '/metrics', function( req, res ) {
+  var register = req.app.locals.register;
+
+  res.set( 'Content-Type', register.contentType );
+  res.end( register.metrics() );
+});
+
+
 module.exports = router;
