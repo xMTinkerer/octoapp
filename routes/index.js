@@ -4,8 +4,11 @@ var router = express.Router();
 router.get('/', function(req, res) {
   var data = req.app.get('appData');
 
+  var someMetricValue = req.app.locals.someMetricValue;
+
   res.render('index', {
-    'title': 'OctoApp'
+    'title': 'OctoApp',
+    'someMetricValue': someMetricValue
   });
 
 });

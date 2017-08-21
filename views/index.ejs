@@ -69,6 +69,7 @@
                 <form name="makemetricsform">
                   <button name="makemetricsbutton" ng-model="makemetricsbutton" ng-click="makeMetrics('up')" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-up"></span></button>
                   <button name="makemetricsbutton" ng-model="makemetricsbutton" ng-click="makeMetrics('down')" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-down"></span></button>
+                  </br>
                   <div ng-messages="makemetricsform.makemetricsbutton.$error" role="alert">
                     <div ng-message="submitted">Moved someMetric {{ direction }}</div>
                     <div ng-message="error">Error moving someMetric</div>

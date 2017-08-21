@@ -12,8 +12,9 @@ const someMetric = new Gauge({
      labelNames: ['code']
 });
 
+var someMetricValue = 10;
 // Set to some initial value
-someMetric.set( 10 );
+someMetric.set( someMetricValue );
 
 promClient.collectDefaultMetrics();
 
@@ -37,8 +38,9 @@ app.use( require( './routes/metricmaker' ) );
 app.use( '/public', express.static( __dirname + '/views/public' ) );
 
 // Expose the register to the routes
-app.locals.register   = register;
-app.locals.someMetric = someMetric;
+app.locals.register        = register;
+app.locals.someMetric      = someMetric;
+app.locals.someMetricValue = someMetricValue;
 
 app.locals.logger = new (winston.Logger)({
 	"transports": [
