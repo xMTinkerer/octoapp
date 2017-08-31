@@ -26,7 +26,7 @@ router.post('/stacktracer', function( req, res ) {
   //   'title': 'OctoApp'
   // });
 
-  logger.error( new Error( "This is my stack trace here" ) );
+  logger.error( new Error( "java.net.SocketException: Connection reset" ) );
 
   res.status( 200 ).send( 'Done' );
 
