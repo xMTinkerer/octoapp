@@ -33,5 +33,35 @@ touch
 {"level":"info","message":"Listening on port 9988","timestamp":"2017-08-07T17:21:55.570Z"}
 {"level":"info","message":"Listening on port 9988","timestamp":"2017-08-07T17:22:34.540Z"}
 {"level":"info","message":"Listening on port 9988","timestamp":"2017-08-07T17:22:41.459Z"}
+<<<<<<< HEAD
 {"level":"info","message":"Listening on port 9988","timestamp":"2017-08-07T22:04:50.710Z"}
 {"level":"info","message":"Listening on port 9988","timestamp":"2017-08-31T20:23:47.011Z"}
+=======
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T21:59:59.336Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:04:30.511Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:04:49.209Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:06:15.483Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:11:42.960Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:12:02.478Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:12:37.611Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:12:49.755Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:12:58.703Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:25:58.602Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:29:26.916Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:30:01.174Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:43:21.990Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:48:15.032Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:48:17.772Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:51:29.366Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:52:46.571Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:53:48.242Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-17T22:54:01.909Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-18T15:23:55.938Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-18T15:30:05.773Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-20T00:35:09.617Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-20T00:57:53.679Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-20T01:05:02.347Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-20T01:07:11.037Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-20T01:08:23.547Z"}
+{"level":"info","message":"Listening on port 9988","timestamp":"2017-08-20T01:08:54.349Z"}
+>>>>>>> 274c8a0599581775f631abe1ab587e64b2a6b434

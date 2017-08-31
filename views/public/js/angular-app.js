@@ -14,6 +14,31 @@ octoapp.controller( 'octoController', function( $scope, $http ){
 	};
 	*/
 
+	$scope.makeMetrics = function( direction ) {
+
+		var postData = { "direction": direction };
+
+		$scope.direction = direction;
+
+		console.log( "Inside $scope.makeMetrics ..." );
+		$http.post( '/metricmaker/', postData )
+		.then( function() { 
+			
+			$scope.makemetricsform.makemetricsbutton.$error = { 
+				submitted: true,
+				error: false
+			}
+
+		}, function() {
+
+			$scope.makemetricsform.makemetricsbutton.$error = { 
+				submitted: false,
+				error: true
+			}
+		}); // error
+
+	}
+
 	$scope.tripStacktrace = function() {
 	
 
