@@ -4,3 +4,5 @@ logs/*.log
 octoapp.sh
 screen.conf
 screenlog.0
+newrelic.js
+newrelic_agent.log

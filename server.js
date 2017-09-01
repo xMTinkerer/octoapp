@@ -1,3 +1,5 @@
+var newrelic = require('newrelic');
+
 var express = require('express');
 var winston = require( 'winston' );
 var bodyParser = require('body-parser');

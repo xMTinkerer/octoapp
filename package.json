@@ -13,6 +13,7 @@
     "body-parser": "^1.15.2",
     "ejs": "^2.5.5",
     "express": "^4.14.0",
+    "newrelic": "^2.2.0",
     "nodemon": "^1.11.0",
     "prom-client": "^10.0.3",
     "promise": "^7.1.1",
