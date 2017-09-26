@@ -1,7 +1,7 @@
 // Angular App
 var octoapp = angular.module( 'octoapp', [ "ngMessages" ] );
 
-octoapp.controller( 'octoController', function( $scope, $http ){
+octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 	/*
 	$scope.stacktrace.tripStacktrace.$error = { 
 		submitted: false,
@@ -14,11 +14,40 @@ octoapp.controller( 'octoController', function( $scope, $http ){
 	};
 	*/
 
-	$scope.makeMetrics = function( direction ) {
 
-		var postData = { "direction": direction };
+	$scope.makeerror = function( direction ) {
 
-		$scope.direction = direction;
+		var postData = {};
+
+		
+		$http.post( '/error/', postData )
+		.then( function() { 
+			
+			$scope.errorform.errorbutton.$error = { 
+				submitted: true,
+				error: false
+			}
+			console.log( 'Success!' );
+
+			$timeout( resetMessages( $scope.errorform.errorbutton ), 10*1000 );
+
+		}, function() {
+
+			$scope.errorform.errorbutton.$error = { 
+				submitted: false,
+				error: true
+			}
+		}); // error
+
+	}
+
+
+
+	$scope.makeMetrics = function( value ) {
+
+		var postData = { "value": value };
+
+		$scope.value = value;
 
 		console.log( "Inside $scope.makeMetrics ..." );
 		$http.post( '/metricmaker/', postData )
@@ -28,6 +57,8 @@ octoapp.controller( 'octoController', function( $scope, $http ){
 				submitted: true,
 				error: false
 			}
+
+			$timeout( resetMessages( $scope.makemetricsform.makemetricsbutton ), 10*1000 );
 
 		}, function() {
 
@@ -54,13 +85,8 @@ octoapp.controller( 'octoController', function( $scope, $http ){
 				error: false
 			}
 
-			setTimeout( function() { 
-				console.log( 'Hello?' );
-				$scope.stacktrace.tripStacktrace.$error = { 
-					submitted: false,
-					error: false
-				}
-			}, 5*1000 );
+			$timeout( resetMessages( $scope.stacktrace.tripStacktrace ), 10*1000 );
+
 		}, function() {
 			console.log( 'Error posting!' );
 
@@ -74,17 +100,15 @@ octoapp.controller( 'octoController', function( $scope, $http ){
 
 	$scope.spikeCPU = function() {
 
-		console.log( 'SpikeCPU: ' + $scope.spikeCPUseconds );
+		
+		$scope.cpuspike.cpuspikebutton.$error = {
+			submitted: true,
+			finished: false
+		};
 
-
-			$scope.cpuspike.cpuspikebutton.$error = {
-				submitted: true,
-				finished: false
-			};
-
-
+		// Spike for 10 seconds
 		var postData = {
-			seconds: $scope.spikeCPUseconds
+			seconds: 10
 		};
 
 		//var deferred = $q.defer();
@@ -97,12 +121,8 @@ octoapp.controller( 'octoController', function( $scope, $http ){
 				finished: true
 			};
 
-			setTimeout( function() { 
-    			$scope.cpuspike.cpuspikebutton.$error = {
-					submitted: false,
-					finished: false
-				};
-  			}, 10*1000);
+			$timeout( resetMessages( $scope.cpuspike.cpuspikebutton ), 10*1000 );
+
 
 
 		}, function() {  // error
@@ -111,5 +131,12 @@ octoapp.controller( 'octoController', function( $scope, $http ){
 
 	};
 
+    resetMessages = function( form ) {
+    	form.$error = {
+    		submitted: false,
+    		error: false,
+    		finished: false
+    	}
+    };
 
 } );
