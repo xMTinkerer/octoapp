@@ -19,6 +19,7 @@ router.post('/metricmaker', function( req, res ) {
   someMetric.set( value );
   someMetricValue = value;
 
+/*
   // Old direction code
   if( direction == 'up' ) {
 
@@ -29,6 +30,7 @@ router.post('/metricmaker', function( req, res ) {
     someMetricValue -= 2;
     someMetric.dec( 2 );
   }
+*/
 
   console.log( 'Metric: ' + someMetricValue );
   res.status( 200 ).send( 'Done' );
