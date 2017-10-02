@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<style>
+		.row.extra-bottom-padding{
+		   margin-bottom: 20px;
+		}
+		[class*="span"] { background: #EEF; }
+		[class*="span"] [class*="span"] { background: #FEE; }
+		.row > div {
+		   margin-top:10px;
+		   padding: 20px;
+		   outline: 2px solid #ddd;
+		   outline-offset: -10px;
+		   -moz-outline-radius: 10px;
+		   -webkit-outline-radius: 10px;
+		}
+		input { 
+		   max-width: 100%;
+		} 
+		</style>
+		<title><%= title %></title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body >
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6">
+					<h1><%= title %><img src="/public/img/_Final_xM_Octo-Logo-01.png" width="100" height="100" align="right"></h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<h3><span class="fa fa-sign-in"></span> Login</h3>
+					<!-- LOGIN FORM -->
+				    <!-- show any messages that come back with authentication -->
+    				<% if (message.length > 0) { %>
+        				<div class="alert alert-danger"><%= message %></div>
+    				<% } %>
+					<form action="/login" method="post">
+						<div class="form-group">
+							<label>Username</label>
+							<input type="text" class="form-control" name="username">
+						</div>
+						<div class="form-group">
+							<label>Password</label>
+							<input type="password" class="form-control" name="password">
+						</div>
+						<button type="submit" class="btn btn-primary btn-sm">Login</button>
+					</form>
+					<hr>
+				</div>
+			</div>
+		</body>
+	</html>
