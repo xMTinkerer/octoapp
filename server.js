@@ -10,7 +10,7 @@ const flash      = require('connect-flash');
 
 // For authentication
 const passport      = require( 'passport' )
-const LocalStrategy = require( 'passport-Local' ).Strategy;
+const LocalStrategy = require( 'passport-local' ).Strategy;
 const session       = require( 'express-session' )
 //const RedisStore = require('connect-redis')(session)
 var db = require( './data/users' );
@@ -30,7 +30,7 @@ passport.use( 'local', new LocalStrategy({
       db.findByUsername( username, function( err, user ) {
 
          if ( err )                       { return done( err ); }
-         if ( !user )                     { return done( null, false, req.flash('loginMessage', 'No user found.') ); }
+         if ( !user )                     { return done( null, false, req.flash('loginMessage', 'User not found.') ); }
          if ( user.password != password ) { return done( null, false, req.flash('loginMessage', 'Oops! Wrong password.') ); }
          return done( null, user );
       });
