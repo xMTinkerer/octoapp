@@ -3,7 +3,7 @@ const winston = require( 'winston' );
 const express = require( 'express' );
 const router  = express.Router();
 
-const errorMessage = "java.net.SocketException: Connection reset";
+
 /*
 router.get('/error', function(req, res, next) {
   const stackTracer = winston.loggers.get( 'stacktracer' );
@@ -20,6 +20,7 @@ router.post('/stacktracer', function( req, res ) {
   
   const stackTracer = winston.loggers.get( 'stacktracer' );
 
+  const errorMessage = "java.net.SocketException: Connection reset";
   stackTracer.error( { message:  errorMessage });
 
   res.status( 200 ).send( 'Done' );
@@ -31,6 +32,8 @@ router.post('/stacktracer', function( req, res ) {
 router.post('/dynatracer', function( req, res ) {
   
   const dynatracer   = winston.loggers.get( 'dynatracer' );
+
+  const errorMessage = "java.lang.NullPointerException";
 
   for( var i=0; i<10; i++ )
      dynatracer.error(   { message: errorMessage} );
