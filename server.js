@@ -123,6 +123,8 @@ app.locals.someMetricValue = someMetricValue;
 
 app.locals.newrelic        = newrelic;
 
+app.locals.pageEnabled = false;
+
 
 loggers.add( 'main', {
 	"transports": [

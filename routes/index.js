@@ -12,7 +12,8 @@ router.get( '/',
     res.render('index', {
       'title': 'OctoApp',
       'someMetricValue': someMetricValue,
-      'user': req.user
+      'user': req.user,
+      'pageEnabled': req.app.locals.pageEnabled
     });
 
 });
@@ -43,7 +44,7 @@ router.get( '/logout',
     res.redirect('/');
 });
  
-   
+
 
 // Not authenticated...
 router.get( '/metrics', function( req, res ) {
@@ -53,6 +54,34 @@ router.get( '/metrics', function( req, res ) {
   res.end( register.metrics() );
 });
 
+
+router.get( '/thepage', function( req, res ) {
+
+   if( req.app.locals.pageEnabled ) {
+ 
+     res.render( 'thepage', { stuff: "value" }, (err, html) => {
+        res.send( 'Hello?' );
+     });
+ 
+ 
+   }
+   else {
+
+    res.status(404).send( 'Not found!' );
+   }
+   
+   //req.app.locals.pageEnabled = !req.app.locals.pageEnabled;
+
+});
+
+router.get( '/serverdata', function( req, res ) {
+  console.log( "getting server data..." );
+  
+  res.status( 200 ).send( { 
+    pageEnabled: req.app.locals.pageEnabled 
+  } );
+
+})
 
 
 // This can be used to ensure other endpoints are secured

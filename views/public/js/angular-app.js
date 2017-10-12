@@ -1,5 +1,5 @@
 // Angular App
-var octoapp = angular.module( 'octoapp', [ "ngMessages" ] );
+var octoapp = angular.module( 'octoapp', [ 'ngMessages', 'ui.toggle' ] );
 
 octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 	/*
@@ -12,28 +12,41 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		submitted: false,
 		finished: false
 	};
+
 	*/
 
-	$scope.tripDynatrace = function() {
+
+	$http.get( '/serverdata' ).then( resp => {
+		$scope.pageEnabled   = resp.data.pageEnabled;
+		$scope.switchEnabled = $scope.pageEnabled;
+	},
+	err => {
+		console.log( "error getting server data" );
+	});
+
+	$scope.togglePage = function() {
 		
-	
 
 		var postData = { };
 
 		$http.post( '/dynatracer/', postData )
-		.then( function() { 
-			console.log( 'Successful post!' );
-			$scope.stacktrace.tripDynatraceButton.$error = { 
+		.then( function( resp ) { 
+			console.log( 'Successful post! ' + JSON.stringify( resp.data ) );
+
+			$scope.pageEnabled   = resp.data.pageEnabled;
+			$scope.switchEnabled = $scope.pageEnabled;
+
+			$scope.dynatrace.switchDynatrace.$error = { 
 				submitted: true,
 				error: false
 			}
 
-			$timeout( resetMessages( $scope.stacktrace.tripDynatraceButton ), 10*1000 );
+			$timeout( resetMessages( $scope.dynatrace.switchDynatrace ), 10*1000 );
 
 		}, function() {
 			console.log( 'Error posting!' );
 
-			$scope.stacktrace.tripDynatraceButton.$error = { 
+			$scope.dynatrace.switchDynatrace.$error = { 
 				submitted: false,
 				error: true
 			}

@@ -35,10 +35,13 @@ router.post('/dynatracer', function( req, res ) {
 
   const errorMessage = "java.lang.NullPointerException";
 
+  req.app.locals.pageEnabled = !req.app.locals.pageEnabled;
+/*
   for( var i=0; i<10; i++ )
      dynatracer.error(   { message: errorMessage} );
-  
-  res.status( 200 ).send( 'Done' );
+*/
+
+  res.status( 200 ).send( { pageEnabled: req.app.locals.pageEnabled } );
 
 });
 
