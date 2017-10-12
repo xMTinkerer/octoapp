@@ -1,6 +1,6 @@
 var express  = require( 'express' ); 
 var passport = require( 'passport' );
-var router = express.Router();
+var router   = express.Router();
 
  
 router.get( '/', 

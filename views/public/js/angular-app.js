@@ -14,6 +14,33 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 	};
 	*/
 
+	$scope.tripDynatrace = function() {
+		
+	
+
+		var postData = { };
+
+		$http.post( '/dynatracer/', postData )
+		.then( function() { 
+			console.log( 'Successful post!' );
+			$scope.stacktrace.tripDynatraceButton.$error = { 
+				submitted: true,
+				error: false
+			}
+
+			$timeout( resetMessages( $scope.stacktrace.tripDynatraceButton ), 10*1000 );
+
+		}, function() {
+			console.log( 'Error posting!' );
+
+			$scope.stacktrace.tripDynatraceButton.$error = { 
+				submitted: false,
+				error: true
+			}
+		}); // error
+	};
+
+
 
 	$scope.makeerror = function( direction ) {
 
@@ -80,17 +107,17 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		$http.post( '/stacktracer/', postData )
 		.then( function() { 
 			console.log( 'Successful post!' );
-			$scope.stacktrace.tripStacktrace.$error = { 
+			$scope.stacktrace.tripStacktraceButton.$error = { 
 				submitted: true,
 				error: false
 			}
 
-			$timeout( resetMessages( $scope.stacktrace.tripStacktrace ), 10*1000 );
+			$timeout( resetMessages( $scope.stacktrace.tripStacktraceButton ), 10*1000 );
 
 		}, function() {
 			console.log( 'Error posting!' );
 
-			$scope.stacktrace.tripStacktrace.$error = { 
+			$scope.stacktrace.tripStacktraceButton.$error = { 
 				submitted: false,
 				error: true
 			}
@@ -110,6 +137,8 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		var postData = {
 			seconds: 10
 		};
+
+		$scope.spikeCPUseconds = postData.seconds;
 
 		//var deferred = $q.defer();
 

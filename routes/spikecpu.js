@@ -1,38 +1,30 @@
 // Stacktracer
-var express = require('express');
-var router = express.Router();
-var Promise = require('promise');
+const winston = require( 'winston' );
+const Promise = require( 'promise' );
+const express = require( 'express' );
+const router  = express.Router();
+
+
+
 
 var shouldRun = true;
 
 router.post('/spikeCPU', function( req, res ) {
   
-  var spikecpuLogger = req.app.locals.spikecpuLogger;
+  var spikecpuLogger = winston.loggers.get( 'spikecputracer' );
   var body = req.body;
 
-  console.log( 'Req: ' + JSON.stringify( body, null, 1 ) );
+  spikecpuLogger.info( 'Spiking for ' + body.seconds + ' seconds' );
 
-  // res.render('index', {
-  //   'title': 'OctoApp'
-  // });
-	
+  //setTimeout( stopCPUSpike, req.seconds*1000 );
+  //blockCpu();
 
-    //stacktracer.error( new Error( "This is my stack trace here" ) );
-    
-    spikecpuLogger.info( 'Spiking for ' + body.seconds + ' seconds' );
-    
+  var promise = blockCpuFor( body.seconds*1000, spikecpuLogger );
 
-  
+  promise.then( function( str ) { /*console.log( "Finished! str: " + str ); */} );
 
-    //setTimeout( stopCPUSpike, req.seconds*1000 );
-    //blockCpu();
-
-    var promise = blockCpuFor( body.seconds*1000, spikecpuLogger );
-
-    promise.then( function( str ) { /*console.log( "Finished! str: " + str ); */} );
-
-    res.status( 200 ).send( 'OK' );
-    return;
+  res.status( 200 ).send( 'OK' );
+  return;
 
 });
 

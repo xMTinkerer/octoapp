@@ -23,6 +23,6 @@
     "passport-local": "^1.0.0",
     "prom-client": "^10.0.3",
     "promise": "^7.1.1",
-    "winston": "^2.3.0"
+    "winston": "^3.0.0-rc0"
   }
 }

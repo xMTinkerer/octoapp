@@ -1,10 +1,7 @@
-// Stacktracer
-var express = require('express');
-var router = express.Router();
-
- 
-
-
+// Error
+const winston = require( 'winston' );
+const express = require( 'express' );
+const router  = express.Router();
 
 
 router.post('/error', function( req, res ) {
@@ -12,9 +9,7 @@ router.post('/error', function( req, res ) {
   var newrelic = req.app.locals.newrelic;
 
   newrelic.noticeError( new Error( 'Ink happens' ) );
-  console.log( 'Wrote New Relic error' );
-	
-  //console.log( JSON.stringify( req, null, 1 ) );
+  winston.loggers.get('main').info( 'Wrote New Relic error' );
 
   res.status( 200 ).send( 'Done' );
 

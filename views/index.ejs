@@ -48,15 +48,34 @@
 
       <div class="row">
         <div class="col-md-3">
+          <form name="dynatrace">
+            <button name="tripDynatraceButton" ng-model="tripDynatraceButton" ng-click="tripDynatrace()" class="btn btn-primary">Trigger Stacktrace <span class="glyphicon glyphicon-console"></span></button>
+            <div ng-messages="stacktrace.tripDynatraceButton.$error" role="alert">
+              <div ng-message="submitted">Successfully wrote stack trace to ./logs/dynatracer.log</div>
+              <div ng-message="error">Error writing stack trace</div>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-3">
+          <img src="/public/img/dynatrace-logo.png" height="50" align="left">
+        </div> 
+
+      </div>
+        
+
+      <div class="row">
+        <div class="col-md-3">
           <form name="stacktrace">
-            <button name="tripStacktrace" ng-model="tripStacktrace" ng-click="tripStacktrace()" class="btn btn-primary">Trigger Stacktrace <span class="glyphicon glyphicon-console"></span></button>
-            <div ng-messages="stacktrace.tripStacktrace.$error" role="alert">
+            <button name="tripStacktraceButton" ng-model="tripStacktraceButton" ng-click="tripStacktrace()" class="btn btn-primary">Trigger Stacktrace <span class="glyphicon glyphicon-console"></span></button>
+            <div ng-messages="stacktrace.tripStacktraceButton.$error" role="alert">
               <div ng-message="submitted">Successfully wrote stack trace to ./logs/stacktrace.log</div>
               <div ng-message="error">Error writing stack trace</div>
             </div>
           </form>
         </div>
         
+
         <div class="col-md-3">
           <img src="/public/img/splunk-logo.png" height="50" align="left">
         </div>
