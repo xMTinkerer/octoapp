@@ -1,33 +1,40 @@
 // Stacktracer
-var express = require('express');
-var router = express.Router();
- 
+const winston = require( 'winston' );
+const express = require( 'express' );
+const router  = express.Router();
 
-
+const errorMessage = "java.net.SocketException: Connection reset";
+/*
 router.get('/error', function(req, res, next) {
-	var logger = req.app.locals.stacktraceLogger;
+  const stackTracer = winston.loggers.get( 'stacktracer' );
 
 
     // here we cause an error in the pipeline so we see express-winston in action.
-    logger.error( new Error("This is an error and it should be logged to the console") );
+    stackTracer.error( new Error("This is an error and it should be logged to the console") );
 
     res.status( 200 ).send( 'Done' );
+});
+*/
+
+router.post('/stacktracer', function( req, res ) {
+  
+  const stackTracer = winston.loggers.get( 'stacktracer' );
+
+  stackTracer.error( { message:  errorMessage });
+
+  res.status( 200 ).send( 'Done' );
+
 });
 
 
 
-router.post('/stacktracer', function( req, res ) {
+router.post('/dynatracer', function( req, res ) {
   
-	var logger = req.app.locals.stacktraceLogger;
+  const dynatracer   = winston.loggers.get( 'dynatracer' );
 
-	console.log( 'Req: ' + JSON.stringify( req.body, null, 1 ) );
-
-  // res.render('index', {
-  //   'title': 'OctoApp'
-  // });
-
-  logger.error( new Error( "java.net.SocketException: Connection reset" ) );
-
+  for( var i=0; i<10; i++ )
+     dynatracer.error(   { message: errorMessage} );
+  
   res.status( 200 ).send( 'Done' );
 
 });

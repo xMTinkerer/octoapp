@@ -4,9 +4,12 @@ const promClient = require( 'prom-client' );
 
 // Assorted libraries 
 const express    = require( 'express' );
-const winston    = require( 'winston' );
 const bodyParser = require( 'body-parser' );
 const flash      = require('connect-flash');
+
+const { createLogger, format, transports, loggers } = require('winston');
+const { combine, timestamp, label, printf } = format;
+
 
 // For authentication
 const passport      = require( 'passport' )
@@ -14,6 +17,8 @@ const LocalStrategy = require( 'passport-local' ).Strategy;
 const session       = require( 'express-session' )
 //const RedisStore = require('connect-redis')(session)
 var db = require( './data/users' );
+
+
 
 
 // Configure the local strategy for use by Passport.
@@ -109,7 +114,7 @@ app.use( require( './routes/error' ) );
 app.use( '/public', express.static( __dirname + '/views/public' ) );
 
 
-
+ 
 
 // Expose the register to the routes
 app.locals.register        = register;
@@ -119,29 +124,45 @@ app.locals.someMetricValue = someMetricValue;
 app.locals.newrelic        = newrelic;
 
 
-app.locals.logger = new (winston.Logger)({
+loggers.add( 'main', {
 	"transports": [
-		new (winston.transports.Console)(),
-		new (winston.transports.File)({ filename: __dirname + '/logs/main.log' })
+		new transports.Console(),
+		new transports.File({ filename: __dirname + '/logs/main.log' })
 	]
 });
 
-app.locals.stacktraceLogger = new (winston.Logger)({
-	transports: [
-		new (winston.transports.File)({ filename: __dirname + '/logs/stacktraces.log' })
+loggers.add( 'stacktracer', {
+  "format": combine( 
+     timestamp(),
+     format.json()
+  ),
+	"transports": [
+		new transports.File({ filename: __dirname + '/logs/stacktraces.log' })
 	]
 });
 
-app.locals.spikecpuLogger = new (winston.Logger)({
-	transports: [
-		new (winston.transports.File)({ filename: __dirname + '/logs/spikecpu.log' })
+loggers.add( 'spikecputracer', {
+	"transports": [
+		new transports.File({ filename: __dirname + '/logs/spikecpu.log' })
 	]
 });
 
+
+loggers.add( 'dynatracer', {
+  "format": combine( 
+     format.timestamp(),
+     printf(info => {
+        return `${info.timestamp} ${info.level}: ${info.message}`;
+     })
+  ),
+
+  "transports": [
+     new transports.File({ filename: __dirname + '/logs/dynatracer.log', colorize: false })
+  ]
+});
 
 var server = app.listen( app.get('port'), function() {
-  console.log( 'Listening on port ' + app.get('port') );
-  app.locals.logger.info( 'Listening on port ' + app.get('port') );
+  loggers.get('main').info( 'Listening on port ' + app.get('port') );
 });
 
 
