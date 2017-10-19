@@ -12,7 +12,7 @@ router.get( '/',
     res.render('index', {
       'title': 'OctoApp',
       'someMetricValue': someMetricValue,
-      'user': { id: 1, username: 'a', password: 'a' } //req.user
+      'user': req.user
     });
 
 });
