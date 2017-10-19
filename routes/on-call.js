@@ -10,7 +10,6 @@ const XM_HOST   = process.env.XM_HOST;
 
 const { targetMap, tempOnCall } = require( '../data/data' );
 
-console.log( 'TargetMap: ' + JSON.stringify( targetMap, null, 2 ) );
 
 router.get( '/on-call', function( req, res ) {
   
@@ -22,10 +21,8 @@ router.get( '/on-call', function( req, res ) {
 
       for( i in targetMap ){
          respData[ targetMap[i].product ] = getShift( targetMap[i].group, onCallData );
-         //targetMap[i].shift = getShift( targetMap[i].group, onCallData );
       };
       
-      console.log( 'TargetMap: ' + JSON.stringify( targetMap[0], null, 2 ) );
       
       res.status( 200 ).send( respData );
 
@@ -51,7 +48,6 @@ getShiftData = function( groupsArr, cb ) {
 
     request( options, (err, res, body ) => {
     	data = body.data;
-    	//console.log( '  getShiftData data: ' + JSON.stringify( data, null, 2 ) );	
     	cb( data );
     });
 
