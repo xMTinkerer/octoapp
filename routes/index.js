@@ -12,7 +12,7 @@ router.get( '/',
     res.render('index', {
       'title': 'OctoApp',
       'someMetricValue': someMetricValue,
-      'user': req.user
+      'user': { id: 1, username: 'a', password: 'a' } //req.user
     });
 
 });
@@ -52,7 +52,6 @@ router.get( '/metrics', function( req, res ) {
   res.set( 'Content-Type', register.contentType );
   res.end( register.metrics() );
 });
-
 
 
 // This can be used to ensure other endpoints are secured
