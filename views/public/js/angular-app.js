@@ -1,6 +1,18 @@
 // Angular App
 var octoapp = angular.module( 'octoapp', [ "ngMessages" ] );
 
+
+octoapp.directive( 'onCall', function() {
+	return {
+		restrict: 'E',
+		scope: {
+        	product: '@',
+        	oncalldata: '=oncalldata'
+        },
+		templateUrl: '/public/js/on-call-template.html'
+	}
+});
+
 octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 	/*
 	$scope.stacktrace.tripStacktrace.$error = { 
@@ -13,6 +25,19 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		finished: false
 	};
 	*/
+
+	$scope.oncallData = {};
+
+	$http.get( '/on-call' ).then( resp => {
+		$scope.oncallData = resp.data;
+
+	},
+	err => {
+		console.log( "error getting server data" );
+	});
+
+
+
 
 	$scope.tripDynatrace = function() {
 		

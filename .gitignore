@@ -6,4 +6,4 @@ screen.conf
 screenlog.0
 newrelic.js
 newrelic_agent.log
-sftp-config.json
+sftp-config.jsonDISABLED

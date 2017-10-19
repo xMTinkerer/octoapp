@@ -1,23 +1,22 @@
 // APM libraries
-const newrelic   = require( 'newrelic' );
+const newrelic   = require( 'newrelic'    );
 const promClient = require( 'prom-client' );
 
 // Assorted libraries 
-const express    = require( 'express' );
-const bodyParser = require( 'body-parser' );
-const flash      = require('connect-flash');
+const express    = require( 'express'       );
+const bodyParser = require( 'body-parser'   );
+const flash      = require( 'connect-flash' );
 
-const { createLogger, format, transports, loggers } = require('winston');
+const { createLogger, format, transports, loggers } = require( 'winston' );
 const { combine, timestamp, label, printf } = format;
 
 
 // For authentication
-const passport      = require( 'passport' )
+const passport      = require( 'passport' );
 const LocalStrategy = require( 'passport-local' ).Strategy;
-const session       = require( 'express-session' )
+const session       = require( 'express-session' );
 //const RedisStore = require('connect-redis')(session)
 var db = require( './data/users' );
-
 
 
 
@@ -106,7 +105,8 @@ app.use( require( './routes/index'       ) );
 app.use( require( './routes/stacktracer' ) );
 app.use( require( './routes/spikecpu'    ) );
 app.use( require( './routes/metricmaker' ) );
-app.use( require( './routes/error' ) );
+app.use( require( './routes/error'       ) );
+app.use( require( './routes/on-call'     ) );
 
 
 

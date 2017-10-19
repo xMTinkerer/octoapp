@@ -3,11 +3,12 @@
   <head>
     <style>
     .row.extra-bottom-padding{
-       margin-bottom: 20px;
+       margin-bottom: 10px;
     }
     [class*="span"] { background: #EEF; }
     [class*="span"] [class*="span"] { background: #FEE; }
-    .row > div {
+
+  /*  .row > div {
        margin-top:10px;
        padding: 20px;
        outline: 2px solid #ddd;
@@ -15,12 +16,40 @@
        -moz-outline-radius: 10px;
        -webkit-outline-radius: 10px;
     }
+*/
+/*    div.cellBorder { */
+    [class*="row"] {
+       margin-top:10px;
+       padding: 20px;
+       outline: 2px solid #ddd;
+       outline-offset: -10px;
+       -moz-outline-radius: 10px;
+       -webkit-outline-radius: 10px;
+    }
+
+/*
+
+    div.header {
+       margin-top:10px;
+       padding: 20px;
+       outline: 2px solid #ddd; 
+       outline-offset: -10px;
+       -moz-outline-radius: 10px;
+       -webkit-outline-radius: 10px;      
+    }
+*/
+    div.buttonCell {
+      background: green;
+    }
+
     input {
        max-width: 100%;
     }
     </style>
     <title><%= title %></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">-->
+
     <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
@@ -32,7 +61,7 @@
   <body ng-controller="octoController">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-9 header">
           <h1><%= title %><img src="/public/img/_Final_xM_Octo-Logo-01.png" width="100" height="100" align="right"></h1>
         </div>
       </div>
@@ -47,7 +76,7 @@
 <% } else { %>
 
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 cellBorder">
           <form name="dynatrace">
             <button name="tripDynatraceButton" ng-model="tripDynatraceButton" ng-click="tripDynatrace()" class="btn btn-primary">Trigger Stacktrace <span class="glyphicon glyphicon-console"></span></button>
             <div ng-messages="stacktrace.tripDynatraceButton.$error" role="alert">
@@ -57,15 +86,31 @@
           </form>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-3 cellBorder">
           <img src="/public/img/dynatrace-logo.png" height="50" align="left">
         </div> 
 
+        <div class="col-md-3 cellBorder">
+          <on-call product="Dynatrace" oncalldata="oncallData['Dynatrace']"></on-call>
+        </div>
+<!--
+        <div class="col-md-3">
+          Group: {{ oncallData['Dynatrace'].group.targetName }}
+          <div ng-show="oncallData['Dynatrace'].members.count==0">
+            None
+          </div>
+          <div ng-show="oncallData['Dynatrace'].members.count>0">
+            <div ng-repeat="member in oncallData['Dynatrace'].members.data | limitTo: 3">
+              <div ng-hide="member.delay==0"><small><i class="glyphicon glyphicon-time"></i></small> {{ member.delay }}</div>
+              <div><small><i class="glyphicon glyphicon-user"></i></small> {{ member.member.firstName }} {{ member.member.lastName }} ({{ member.member.targetName }})</div>
+            </div>
+          </div>
+        </div>
+-->
       </div>
         
-
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 cellBorder">
           <form name="stacktrace">
             <button name="tripStacktraceButton" ng-model="tripStacktraceButton" ng-click="tripStacktrace()" class="btn btn-primary">Trigger Stacktrace <span class="glyphicon glyphicon-console"></span></button>
             <div ng-messages="stacktrace.tripStacktraceButton.$error" role="alert">
@@ -76,12 +121,19 @@
         </div>
         
 
-        <div class="col-md-3">
+        <div class="col-md-3 cellBorder">
           <img src="/public/img/splunk-logo.png" height="50" align="left">
         </div>
+
+        <div class="col-md-3 cellBorder">
+          <on-call product="Splunk" oncalldata="oncallData['Splunk']"></on-call>
+        </div>
+
+
       </div>
+
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 cellBorder">
           
           <form name="cpuspike" class="form-inline">
             <div class="form-group">
@@ -95,12 +147,19 @@
             
           </form>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 cellBorder">
           <img src="/public/img/solarwinds-server-application-monitor.png" height="50" align="left">
         </div>
+
+        <div class="col-md-3 cellBorder">
+          <on-call product="SolarWinds" oncalldata="oncallData['SolarWinds']"></on-call>
+        </div>
+
+
       </div>
+
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 cellBorder">
           <form name="errorform">
             <button name="errorbutton" ng-model="errorbutton" ng-click="makeerror()" class="btn btn-primary">Throw Error <span class="glyphicon glyphicon-alert"></span></button>
             <div ng-messages="errorform.errorbutton.$error" role="alert">
@@ -109,12 +168,19 @@
             </div>
           </form>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 cellBorder">
           <img src="/public/img/NewRelic-logo-bug.png" height="50" align="left">
         </div>
+
+        <div class="col-md-3 cellBorder">
+          <on-call product="New Relic" oncalldata="oncallData['New Relic']"></on-call>
+        </div>
+
+
       </div>
+
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 cellBorder">
           <form name="makemetricsform">
             
             <button name="makemetricsbutton" ng-model="makemetricsbutton" ng-click="makeMetrics( 40 )" class="btn btn-primary">Set Metric: 40</button>
@@ -127,12 +193,17 @@
           </form>
           <a href="/metrics">See Metrics</a>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 cellBorder">
           <img src="/public/img/prometheus-logo.png" height="50" align="left">
         </div>
+
+        <div class="col-md-3 cellBorder">
+          <on-call product="Prometheus" oncalldata="oncallData['Prometheus']"></on-call>
+        </div>
+
       </div>
 
-<% } %>
+      <% } %>
     </div>
   </body>
 </html>
