@@ -1,3 +1,10 @@
+
 {
-	"stuff": [ "value1" ]
-} 
+  "targetMap": [
+    { "product": "Dynatrace",  "group": "Application Performance" },
+    { "product": "New Relic",  "group": "Web App Team"            },
+    { "product": "Prometheus", "group": "Prometheus Alerts"       },
+    { "product": "SolarWinds", "group": "Server Team Alpha"       },
+    { "product": "Splunk",     "group": "Splunk Events"           }
+  ]
+}

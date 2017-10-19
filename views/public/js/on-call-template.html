@@ -1,0 +1,15 @@
+
+<strong>Group</strong>: {{ oncalldata.group.targetName }}
+<div ng-show="oncalldata.members.count==0">
+   None
+</div>
+<div ng-show="oncalldata.members.count>0">
+   <div ng-repeat="member in oncalldata.members.data | limitTo: 3">
+      <div ng-hide="member.delay==0">
+         &nbsp;&nbsp;&nbsp;<small><i class="glyphicon glyphicon-time"></i></small> {{ member.delay }}
+      </div>
+      <div>
+         &nbsp;&nbsp;&nbsp;<small><i class="glyphicon glyphicon-user"></i></small> {{ member.member.firstName }} {{ member.member.lastName }} ({{ member.member.targetName }})
+      </div>
+   </div>
+</div>

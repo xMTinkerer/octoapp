@@ -54,7 +54,6 @@ router.get( '/metrics', function( req, res ) {
 });
 
 
-
 // This can be used to ensure other endpoints are secured
 const isLoggedIn = function (req, res, next) {
   if(req.isAuthenticated()) {
