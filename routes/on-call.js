@@ -54,10 +54,6 @@ getShiftData = function( groupsArr, cb ) {
 	var data;
 
     request( options, (err, res, body ) => {
-      if( body.code ) {
-         winston.loggers.get( 'main' ).error( 'Error calling on-call: ' + err );
-         cb( [] );
-      }
     	data = body.data;
     	cb( data );
     });
