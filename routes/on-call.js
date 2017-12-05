@@ -34,11 +34,12 @@ router.get( '/on-call', function( req, res ) {
 
 
 getShiftData = function( groupsArr, cb ) {
-
   if( !XM_HOST || !XM_USERNAME || !XM_PASSWORD ) {
+
     winston.loggers.get( 'main' ).info( 'No xMatters details provided, skipping On call schedule retrieval' );
-    return [];
+    cb( [] );
   }
+
 
 	const options = {
 		'uri': 'https://' + XM_HOST + '/api/xm/1/on-call?groups=' + groupsArr.map( item => { return encodeURIComponent( item ) }).join( ',' ),
@@ -53,6 +54,10 @@ getShiftData = function( groupsArr, cb ) {
 	var data;
 
     request( options, (err, res, body ) => {
+      if( body.code ) {
+         winston.loggers.get( 'main' ).error( 'Error calling on-call: ' + err );
+         cb( [] );
+      }
     	data = body.data;
     	cb( data );
     });
