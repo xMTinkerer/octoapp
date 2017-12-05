@@ -1,10 +1,46 @@
-
 {
-  "targetMap": [
-    { "product": "Dynatrace",  "group": "Application Performance" },
-    { "product": "New Relic",  "group": "Web App Team"            },
-    { "product": "Prometheus", "group": "Prometheus Alerts"       },
-    { "product": "SolarWinds", "group": "Server Team Alpha"       },
-    { "product": "Splunk",     "group": "Splunk Events"           }
-  ]
+   "targetMap": [
+      {
+         "product": "AppDynamics",
+         "group": "Octoapp Performance",
+         "url": "",
+         "service-now-group": "",
+         "jira-group": ""
+      },
+      {
+         "product": "Dynatrace",
+         "group": "Application Performance",
+         "url": "https://account.dynatrace.com/basweb/myaccount",
+         "service-now-group": "",
+         "jira-group": ""
+      },
+      {
+         "product": "New Relic",
+         "group": "Web App Team",
+         "url": "https://rpm.newrelic.com/accounts/395751/applications/71686716",
+         "service-now-group": "",
+         "jira-group": ""
+      },
+      {
+         "product": "Prometheus",
+         "group": "Prometheus Alerts",
+         "url": "",
+         "service-now-group": "",
+         "jira-group": ""
+      },
+      {
+         "product": "SolarWinds",
+         "group": "Server Team Alpha",
+         "url": "https://server.pingdom.com/xmatters1",
+         "service-now-group": "",
+         "jira-group": ""
+      },
+      {
+         "product": "Splunk",
+         "group": "Splunk Events",
+         "url": "https://prd-p-53hk4n7nnh5h.cloud.splunk.com/en-US/",
+         "service-now-group": "",
+         "jira-group": ""
+      }
+   ]
 }

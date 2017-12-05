@@ -3,6 +3,7 @@ const express   = require( 'express' );
 const router    = express.Router();
 
 const request   = require( 'request' );
+const winston   = require( 'winston' );
 
 const XM_USERNAME  = process.env.XM_USERNAME;
 const XM_PASSWORD  = process.env.XM_PASSWORD;
@@ -33,6 +34,11 @@ router.get( '/on-call', function( req, res ) {
 
 
 getShiftData = function( groupsArr, cb ) {
+
+  if( !XM_HOST || !XM_USERNAME || !XM_PASSWORD ) {
+    winston.loggers.get( 'main' ).info( 'No xMatters details provided, skipping On call schedule retrieval' );
+    return [];
+  }
 
 	const options = {
 		'uri': 'https://' + XM_HOST + '/api/xm/1/on-call?groups=' + groupsArr.map( item => { return encodeURIComponent( item ) }).join( ',' ),

@@ -67,6 +67,28 @@
 
       <div class="row">
         <div class="col-md-3 cellBorder">
+          <form name="appdynamics">
+            <button name="tripAppDButton" ng-model="tripAppDButton" ng-click="tripAppD()" class="btn btn-primary">Trigger AppDynamics Error <span class="glyphicon glyphicon-console"></span></button>
+            <div ng-messages="stacktrace.tripAppDButton.$error" role="alert">
+              <div ng-message="submitted">Successfully sent Error to AppDynamics</div>
+              <div ng-message="error">Error sending error to AppDynamics</div>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-3 cellBorder">
+          <img src="/public/img/appdynamics-logo.png" height="20" align="left">
+        </div> 
+
+        <div class="col-md-3 cellBorder">
+          <on-call product="AppDynamics" oncalldata="oncallData['AppDynamics']"></on-call>
+        </div>
+        
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-3 cellBorder">
           <form name="dynatrace">
             <button name="tripDynatraceButton" ng-model="tripDynatraceButton" ng-click="tripDynatrace()" class="btn btn-primary">Trigger Stacktrace <span class="glyphicon glyphicon-console"></span></button>
             <div ng-messages="stacktrace.tripDynatraceButton.$error" role="alert">

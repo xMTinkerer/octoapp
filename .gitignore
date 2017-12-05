@@ -6,4 +6,8 @@ screen.conf
 screenlog.0
 newrelic.js
 newrelic_agent.log
+appdynamics_config.js
 sftp-config.jsonDISABLED
+hs*.log
+.env
+nodemon.json

@@ -14,17 +14,7 @@ octoapp.directive( 'onCall', function() {
 });
 
 octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
-	/*
-	$scope.stacktrace.tripStacktrace.$error = { 
-		submitted: false,
-		error: false
-	};
 
-	$scope.cpuspike.cpuspikebutton.$error = {
-		submitted: false,
-		finished: false
-	};
-	*/
 
 	$scope.oncallData = {};
 
@@ -33,11 +23,34 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 	},
 	err => {
-		console.log( "error getting server data" );
+		console.log( "error getting on-call data" );
 	});
 
 
+	$scope.tripAppD = function() {
 
+		var postData = { };
+
+		$http.post( '/appdyn/', postData )
+		.then( function() { 
+			console.log( 'Successful post!' );
+			$scope.appdynamics.tripAppDButton.$error = { 
+				submitted: true,
+				error: false
+			}
+
+			$timeout( resetMessages( $scope.appdynamics.tripAppDButton ), 10*1000 );
+
+		}, function() {
+			console.log( 'Error posting!' );
+
+			$scope.appdynamics.tripAppDButton.$error = { 
+				submitted: false,
+				error: true
+			}
+		}); // error
+
+	};
 
 	$scope.tripDynatrace = function() {
 		
@@ -48,17 +61,17 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		$http.post( '/dynatracer/', postData )
 		.then( function() { 
 			console.log( 'Successful post!' );
-			$scope.stacktrace.tripDynatraceButton.$error = { 
+			$scope.dynatrace.tripDynatraceButton.$error = { 
 				submitted: true,
 				error: false
 			}
 
-			$timeout( resetMessages( $scope.stacktrace.tripDynatraceButton ), 10*1000 );
+			$timeout( resetMessages( $scope.dynatrace.tripDynatraceButton ), 10*1000 );
 
 		}, function() {
 			console.log( 'Error posting!' );
 
-			$scope.stacktrace.tripDynatraceButton.$error = { 
+			$scope.dynatrace.tripDynatraceButton.$error = { 
 				submitted: false,
 				error: true
 			}

@@ -5,11 +5,12 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -e css,ejs,js,json --watch ."
+    "start": "env $(cat .env) nodemon -e css,ejs,js,json --watch ."
   },
   "author": "Travis DePuy",
   "license": "ISC",
   "dependencies": {
+    "appdynamics": "^4.3.5",
     "body-parser": "^1.15.2",
     "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
@@ -17,12 +18,13 @@
     "ejs": "^2.5.5",
     "express": "^4.14.0",
     "express-session": "^1.15.6",
-    "newrelic": "^2.2.0",
+    "newrelic": "^2.4.1",
     "nodemon": "^1.11.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "prom-client": "^10.0.3",
     "promise": "^7.1.1",
+    "querystring": "^0.2.0",
     "request": "^2.83.0",
     "winston": "^3.0.0-rc0"
   }

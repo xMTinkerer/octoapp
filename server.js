@@ -1,6 +1,8 @@
 // APM libraries
+require( './appdynamics_config' );
 const newrelic   = require( 'newrelic'    );
 const promClient = require( 'prom-client' );
+
 
 // Assorted libraries 
 const express    = require( 'express'       );
@@ -106,7 +108,9 @@ app.use( require( './routes/stacktracer' ) );
 app.use( require( './routes/spikecpu'    ) );
 app.use( require( './routes/metricmaker' ) );
 app.use( require( './routes/error'       ) );
+app.use( require( './routes/appdynerror' ) );
 app.use( require( './routes/on-call'     ) );
+
 
 
 
