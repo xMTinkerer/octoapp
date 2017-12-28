@@ -9,7 +9,22 @@ const XM_USERNAME  = process.env.XM_USERNAME;
 const XM_PASSWORD  = process.env.XM_PASSWORD;
 const XM_HOST   = process.env.XM_HOST;
 
-const { targetMap, tempOnCall } = require( '../data/data' );
+
+const { targetMap } = require( '../data/data' );
+
+router.get( '/recipients', function( req, res ) {
+  
+
+   const query = req.query.search;
+
+   const groups = getGroups( query, groups => {
+
+      res.status( 200 ).send( groups );
+
+   } );
+
+  
+});
 
 
 router.get( '/on-call', function( req, res ) {
@@ -75,6 +90,37 @@ getShift = function( groupName, data ) {
 };
 
 
+getGroups = function( query, cb ) {
+
+
+   if( !XM_HOST || !XM_USERNAME || !XM_PASSWORD ) {
+
+      winston.loggers.get( 'main' ).info( 'No xMatters details provided, skipping group search' );
+      cb( [] );
+   }
+
+
+   const options = {
+      'uri': 'https://' + XM_HOST + '/api/xm/1/groups?search=' + encodeURIComponent( query ),
+      'method': 'GET',
+      'json': true,
+      'auth': {
+         'username': XM_USERNAME,
+         'password': XM_PASSWORD
+      }
+   };
+
+   var data;
+
+   request( options, (err, res, body ) => {
+      data = body.data;
+      cb( data );
+   });
+
+
+
+
+}
 
 
 

@@ -1,0 +1,87 @@
+
+.row.extra-bottom-padding {
+   margin-bottom: 10px;
+}
+[class*="span"] { background: #EEF; }
+[class*="span"] [class*="span"] { background: #FEE; }
+
+/*
+[class*="row"] {
+   margin-top:10px;
+   padding: 20px;
+   outline: 2px solid #ddd;
+   outline-offset: -10px;
+   -moz-outline-radius: 10px;
+   -webkit-outline-radius: 10px;
+}
+*/
+
+div.header {
+   margin-top:10px;
+   padding: 20px;
+   outline: 2px solid #ddd; 
+   outline-offset: -10px;
+   -moz-outline-radius: 10px;
+   -webkit-outline-radius: 10px;      
+}
+
+
+div.appGroup {
+   margin-top:10px;
+   padding: 20px;
+   outline: 2px solid #ddd;
+   outline-offset: -10px;
+   -moz-outline-radius: 10px;
+   -webkit-outline-radius: 10px;
+
+}
+
+input {
+   max-width: 100%;
+}
+
+
+
+/* Navigator */
+
+ul.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 125px;
+    background-color: #f1f1f1;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    overflow:hidden;
+}
+
+
+
+li.nav a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li.nav a.on
+{
+    background: #333;
+    color: white;
+}
+
+
+/* Change the link color on hover */
+li.nav a:hover {
+    background-color: #555;
+    color: white;
+}
+
+
+
+
+
+
+

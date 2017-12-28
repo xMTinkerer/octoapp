@@ -21,7 +21,7 @@ router.post('/spikeCPU', function( req, res ) {
 
   var promise = blockCpuFor( body.seconds*1000, spikecpuLogger );
 
-  promise.then( function( str ) { /*console.log( "Finished! str: " + str ); */} );
+  promise.then( function( str ) { console.log( "Finished! str: " + str ); } );
 
   res.status( 200 ).send( 'OK' );
   return;

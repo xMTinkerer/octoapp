@@ -1,5 +1,5 @@
 // APM libraries
-require( './appdynamics_config' );
+//require( './appdynamics_config' );
 const newrelic   = require( 'newrelic'    );
 const promClient = require( 'prom-client' );
 
@@ -109,14 +109,11 @@ app.use( require( './routes/spikecpu'    ) );
 app.use( require( './routes/metricmaker' ) );
 app.use( require( './routes/error'       ) );
 app.use( require( './routes/appdynerror' ) );
-app.use( require( './routes/on-call'     ) );
-
-
-
+app.use( require( './routes/xmatters'    ) );
+app.use( require( './routes/simulator'   ) );
 
 
 app.use( '/public', express.static( __dirname + '/views/public' ) );
-
 
  
 
@@ -129,6 +126,10 @@ app.locals.newrelic        = newrelic;
 
 
 loggers.add( 'main', {
+  "format": combine(
+    timestamp(),
+    format.json()
+  ),
 	"transports": [
 		new transports.Console(),
 		new transports.File({ filename: __dirname + '/logs/main.log' })

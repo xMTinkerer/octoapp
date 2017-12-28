@@ -2,7 +2,8 @@ var express  = require( 'express' );
 var passport = require( 'passport' );
 var router   = express.Router();
 
- 
+const winston = require( 'winston' );
+
 router.get( '/', 
   function(req, res) {
     var data = req.app.get( 'appData' );
@@ -29,11 +30,18 @@ router.get( '/login',
 router.post('/login', 
     passport.authenticate('local', { 
        failureRedirect: '/login',
-       successRedirect: '/',
        failureFlash: true
     }),
-    function(req, res) {
-       res.redirect( '/' );
+    (req, res) => {
+//       successRedirect: req.path,
+
+      winston.loggers.get('main').info( 'Path? ' + req.path + ' redirectTo: ' + req.session.redirectTo );
+      var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/';
+      delete req.session.redirectTo;
+
+
+      
+       res.redirect( redirectTo );
     }
 );
 
@@ -44,6 +52,7 @@ router.get( '/logout',
 });
  
    
+
 
 // Not authenticated...
 router.get( '/metrics', function( req, res ) {
