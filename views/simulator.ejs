@@ -41,6 +41,7 @@
       <div class="row">
       	<div class="col-md-3 appGroup">
       		<form name="simulatorForm">
+<!--
 			<div class="dropdown">
 			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			    Dropdown button
@@ -50,11 +51,26 @@
 			    <a class="dropdown-item" href="#">Something else here</a>
 			  </div>
 			</div>
+-->
 
-
+<!--
       		<select ng-model="selectedApp" 
   				ng-options="app for app in allApps">
 			</select>
+-->
+
+        <tags-input ng-model="selectedApp" 
+                  class="bootstrap" 
+                  placeholder="Application"
+                  replace-spaces-with-dashes="false"
+                  add-from-autocomplete-only="true"
+                  max-tags="1">
+          <auto-complete source="getApplications( $query )"
+                         load-on-down-arrow="true"
+                         load-on-focus="true"></auto-complete>
+        </tags-input>
+
+
 
 		  	<tags-input ng-model="selectedRecipients" 
 		              class="bootstrap" 

@@ -33,9 +33,8 @@ router.post('/login',
        failureFlash: true
     }),
     (req, res) => {
-//       successRedirect: req.path,
 
-      winston.loggers.get('main').info( 'Path? ' + req.path + ' redirectTo: ' + req.session.redirectTo );
+      //winston.loggers.get('main').info( 'Path? ' + req.path + ' redirectTo: ' + req.session.redirectTo );
       var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/';
       delete req.session.redirectTo;
 

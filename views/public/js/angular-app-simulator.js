@@ -23,6 +23,12 @@ octoapp.controller( 'octoSimController', function( $scope, $http, $timeout, XMSe
 
 
 
+   $scope.getApplications = function( query ) {
+
+      return $scope.allApps;
+   }
+
+
 
 	$scope.runSimulation = () => {
 
