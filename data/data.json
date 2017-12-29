@@ -89,7 +89,7 @@
             "owner": "",
             "severity": "CRITICAL",
             "policy_url": "https://alerts.newrelic.com/accounts/395751/policies/117337",
-            "current_state": "closed",
+            "current_state": "open",
             "policy_name": "Octoapp Policy",
             "incident_url": "https://alerts.newrelic.com/accounts/395751/incidents/13722143",
             "incident_acknowledge_url": "https://alerts.newrelic.com/accounts/395751/incidents/13722143/acknowledge",
