@@ -54,7 +54,7 @@ octoapp.controller( 'octoSimController', function( $scope, $http, $timeout, $q, 
 		
 		var postData = { 
 			"recipients": recipients, 
-			"application": $scope.selectedApp[0].text 
+			"application": $scope.selectedApp
 		};
 
 		$http.post( '/simulator/', postData )
