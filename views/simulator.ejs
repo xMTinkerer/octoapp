@@ -2,91 +2,76 @@
 <html ng-app="octoapp">
   <head>
     <style>
-
     </style>
     <title><%= title %></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
     <link rel="stylesheet" href="https://mbenford.github.io/ngTagsInput/css/ng-tags-input.min.css" />
     <link rel='stylesheet' href='/public/stylesheets/style.css' />
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-resource.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-messages.js"></script>
     <script src="https://mbenford.github.io/ngTagsInput/js/ng-tags-input.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
     <script type="text/javascript" src="/public/js/angular-app-simulator.js"></script>
     <script type="text/javascript" src="/public/js/xm-service.js"></script>
-
     <script type="text/javascript" src="/public/js/header.js"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body ng-controller="octoSimController">
     <div class="container-fluid">
-      <% include header %> 
-
-<% if( !user ) { %>
+      <% include header %>
+      <% if( !user ) { %>
       <div class="row">
         <div class="col-md-6">
           <h2>Welcome!</h2>
           <p>Pelase <a href="/login">login</a>.</p>
         </div>
       </div>
-<% } else { %>
-
+      <% } else { %>
       <div class="row">
-      	<div class="col-md-3 appGroup">
-      		<form name="simulatorForm">
-<!--
-			<div class="dropdown">
-			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			    Dropdown button
-			  </button>
-			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			    <a class="dropdown-item" href="#">Another action</a>
-			    <a class="dropdown-item" href="#">Something else here</a>
-			  </div>
-			</div>
--->
+        <div class="col-md-3 appGroup">
 
-<!--
-      		<select ng-model="selectedApp" 
-  				ng-options="app for app in allApps">
-			</select>
--->
+          <form name="simulatorForm">
 
-        <tags-input ng-model="selectedApp" 
-                  class="bootstrap" 
-                  placeholder="Application"
-                  replace-spaces-with-dashes="false"
-                  add-from-autocomplete-only="true"
-                  max-tags="1">
-          <auto-complete source="getApplications( $query )"
-                         load-on-down-arrow="true"
-                         load-on-focus="true"></auto-complete>
-        </tags-input>
+            <div class="dropdown">
+              Application: <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" required name="selectedAppDropdown">{{selectedApp}}
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li ng-model="selectedApp" ng-click="selectApp(app)" ng-repeat="app in allApps"><a href="#">{{app}}</a></li>
+              </ul>
+            </div>
+
+            <tags-input ng-model="selectedRecipients"
+              class="bootstrap"
+              display-property="targetName"
+              placeholder="Groups"
+              replace-spaces-with-dashes="false"
+              add-from-autocomplete-only="true"
+              min-tags="1">
+              <auto-complete source="getRecipients( $query )"></auto-complete>
+          </tags-input>
+
+          <button name="simulateButton" ng-model="simulateButton" ng-click="runSimulation()" class="btn btn-primary">Submit <span class="glyphicon glyphicon-console"></span></button>
+
+        </form>
 
 
+        <div class="panel" ng-if="is_finished">
+          <h4>{{theMessageHeader}}</h4>
+          <div class="row">
+            <div class="col-md-8">
+              <p>{{theMessage}}</p>
+            </div>
+          </div>
+        </div>
 
-		  	<tags-input ng-model="selectedRecipients" 
-		              class="bootstrap" 
-		              display-property="targetName"
-		              placeholder="Groups"
-		              replace-spaces-with-dashes="false"
-		              add-from-autocomplete-only="true">
-		      <auto-complete source="getRecipients( $query )"></auto-complete>
-		    </tags-input>
 
-		    <button name="simulateButton" ng-model="simulateButton" ng-click="runSimulation()" class="btn btn-primary">Submit <span class="glyphicon glyphicon-console"></span></button>
-		</form>
-		</div>
       </div>
-
-      <% } %>
     </div>
-  </body>
+    <% } %>
+  </div>
+</body>
 </html>
