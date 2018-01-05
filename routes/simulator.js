@@ -54,14 +54,15 @@ router.post( '/simulator', (req, res) => {
    }
 
 
-   const payload = JSON.stringify( simData[ appName ].payload );
+   const payload = simData[ appName ].payload;
 
    payload.recipients = data.recipients;
    
+
    const options = {
      'uri': simData[ appName ].endpoint,
      'method': 'POST',
-     'body': payload
+     'body': JSON.stringify( payload )
    };
 
 
@@ -79,7 +80,7 @@ router.post( '/simulator', (req, res) => {
      if( options.headers['Content-Type'] == 'application/x-www-form-urlencoded' ) {
         delete options.body;
         options.form = {
-          "payload": JSON.stringify(  simData[ appName ].payload )
+          "payload": JSON.stringify( payload )
         }
      }
 
