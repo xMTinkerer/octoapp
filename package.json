@@ -10,7 +10,6 @@
   "author": "Travis DePuy",
   "license": "ISC",
   "dependencies": {
-    "appdynamics": "^4.3.5",
     "body-parser": "^1.15.2",
     "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
