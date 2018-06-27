@@ -41,7 +41,7 @@ router.post('/stackdriver', function( req, res ) {
         console.error('ERROR:', err);
       });
 
-    winston.loggers.get( 'main' ).info( 'Wrote log to' + logName );
+    winston.loggers.get( 'main' ).info( 'Wrote log to ' + logName );
     res.status( 200 ).send( 'Done' );
 });
 
