@@ -27,7 +27,7 @@
       <div class="row">
         <div class="col-md-6">
           <h2>Welcome!</h2>
-          <p>Pelase <a href="/login">login</a>.</p>
+          <p>Please <a href="/login">login</a>.</p>
         </div>
       </div>
       <% } else { %>
@@ -50,13 +50,15 @@
               placeholder="Groups"
               replace-spaces-with-dashes="false"
               add-from-autocomplete-only="true"
-              min-tags="1">
+              min-tags="1"
+              on-tag-added="getOnCall($tag)"
+              on-tag-removed="removeOnCall($tag)"
               <auto-complete source="getRecipients( $query )"></auto-complete>
-          </tags-input>
+            </tags-input>
 
           <button name="simulateButton" ng-model="simulateButton" ng-click="runSimulation()" class="btn btn-primary">Submit <span class="glyphicon glyphicon-console"></span></button>
 
-        </form>
+          </form>
 
 
         <div class="panel" ng-if="is_finished">
@@ -67,8 +69,25 @@
             </div>
           </div>
         </div>
-
-
+      </div>
+      <div class="col-md-3 appGroup">
+          <div ng-repeat="selection in oncallData">
+            <strong>Group</strong>: {{ selection.group.targetName }}
+            <div ng-show="selection.members.count==0">
+              None
+            </div>
+            <div ng-show="selection.members.count>0">
+              <div ng-repeat="member in selection.members.data | limitTo: 3">
+                  <div ng-hide="member.delay==0">
+                    &nbsp;&nbsp;&nbsp;<small><i class="glyphicon glyphicon-time"></i></small> {{ member.delay }}
+                  </div>
+                  <div>
+                    &nbsp;&nbsp;&nbsp;<small><i class="glyphicon glyphicon-user"></i></small> {{ member.member.firstName }} {{ member.member.lastName }} ({{ member.member.targetName }})
+                  </div>
+              </div>
+            </div>
+            <br></br>
+          </div>
       </div>
     </div>
     <% } %>

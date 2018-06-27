@@ -37,6 +37,14 @@ router.get( '/simulator',
 
 });
 
+router.get( '/simulator/:group/on-call', function(req, res) {
+
+  const onCallData = getGroupShift( req.params.group, onCallData => {
+    res.status( 200 ).send( onCallData[0] );
+  });
+
+});
+
 // { id: 1, username: "CHANGEME", password: "PASSWORD" }
 
 router.post( '/simulator', (req, res) => {
@@ -109,6 +117,32 @@ router.get( '/applications', (req,res) => {
 
     res.status( 200 ).send( apps );
 });
+
+
+getGroupShift = function( groupName, cb ) {
+  if( !XM_HOST || !XM_USERNAME || !XM_PASSWORD ) {
+    winston.loggers.get( 'main' ).info( 'No xMatters details provided, skipping On call schedule retrieval' );
+    cb( [] );
+  }
+
+	const options = {
+		'uri': 'https://' + XM_HOST + '/api/xm/1/on-call?groups=' + encodeURIComponent( groupName ),
+		'method': 'GET',
+		'json': true,
+		'auth': {
+			'username': XM_USERNAME,
+			'password': XM_PASSWORD
+		}
+  };
+  
+	var data;
+
+  request( options, (err, res, body ) => {
+    data = body.data;
+    cb( data );
+  });
+    
+}
 
 
 module.exports = router;
