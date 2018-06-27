@@ -36,6 +36,27 @@
 
       <div class="row appGroup">
         <div class="col-md-3 cellBorder">
+          <form name="stackdriver">
+            <button name="tripLogButton" ng-model="tripLogButton" ng-click="tripLog()" class="btn btn-primary">Trigger GCP Log Entry <span class="glyphicon glyphicon-th-list"></span></button>
+            <div ng-messages="stacktrace.tripLogButton.$error" role="alert">
+              <div ng-message="submitted">Successfully logged to GCP</div>
+              <div ng-message="error">Error logging to GCP</div>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-3 cellBorder">
+          <img src="/public/img/stackdriver-logo.png" height="40" align="left">
+        </div> 
+
+        <div class="col-md-3 cellBorder">
+          <on-call product="Stackdriver" oncalldata="oncallData['Stackdriver']"></on-call>
+        </div>
+        
+      </div>
+
+      <div class="row appGroup">
+        <div class="col-md-3 cellBorder">
           <form name="appdynamics">
             <button name="tripAppDButton" ng-model="tripAppDButton" ng-click="tripAppD()" class="btn btn-primary">Trigger AppDynamics Error <span class="glyphicon glyphicon-console"></span></button>
             <div ng-messages="stacktrace.tripAppDButton.$error" role="alert">
@@ -46,7 +67,7 @@
         </div>
 
         <div class="col-md-3 cellBorder">
-          <img src="/public/img/appdynamics-logo.png" height="20" align="left">
+          <img src="/public/img/appdynamics-logo.png" height="25" align="left">
         </div> 
 
         <div class="col-md-3 cellBorder">
@@ -89,7 +110,7 @@
         
 
         <div class="col-md-3 cellBorder">
-          <img src="/public/img/splunk-logo.png" height="50" align="left">
+          <img src="/public/img/splunk-logo.png" height="40" align="left">
         </div>
 
         <div class="col-md-3 cellBorder">
@@ -131,12 +152,12 @@
             <button name="errorbutton" ng-model="errorbutton" ng-click="makeerror()" class="btn btn-primary">Throw Error <span class="glyphicon glyphicon-alert"></span></button>
             <div ng-messages="errorform.errorbutton.$error" role="alert">
               <div ng-message="submitted">Made ink!</div>
-              <div ng-message="error">Bad happened</div>
+              <div ng-message="finished">Bad happened</div>
             </div>
           </form>
         </div>
         <div class="col-md-3 cellBorder">
-          <img src="/public/img/NewRelic-logo-bug.png" height="50" align="left">
+          <img src="/public/img/NewRelic-logo-bug.png" height="35" align="left">
         </div>
 
         <div class="col-md-3 cellBorder">

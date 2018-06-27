@@ -26,6 +26,30 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		console.log( "error getting on-call data" );
 	});
 
+	
+	$scope.tripLog = function() {
+
+		var postData = { };
+
+		$http.post( '/stackdriver/', postData )
+		.then( function() {
+			console.log( 'Successful post!' );
+			$scope.stackdriver.tripLogButton.$error = { 
+				submitted: true,
+				error: false
+			}
+
+			$timeout( resetMessages( $scope.stackdriver.tripLogButton ), 10*1000 );
+
+		}, function() {
+			console.log( 'Error posting!' );
+
+			$scope.stackdriver.tripLogButton.$error = { 
+				submitted: false,
+				error: true
+			}
+		}); // error
+	};
 
 	$scope.tripAppD = function() {
 
@@ -77,63 +101,6 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			}
 		}); // error
 	};
-
-
-
-	$scope.makeerror = function( direction ) {
-
-		var postData = {};
-
-		
-		$http.post( '/error/', postData )
-		.then( function() { 
-			
-			$scope.errorform.errorbutton.$error = { 
-				submitted: true,
-				error: false
-			}
-			console.log( 'Success!' );
-
-			$timeout( resetMessages( $scope.errorform.errorbutton ), 10*1000 );
-
-		}, function() {
-
-			$scope.errorform.errorbutton.$error = { 
-				submitted: false,
-				error: true
-			}
-		}); // error
-
-	}
-
-
-
-	$scope.makeMetrics = function( value ) {
-
-		var postData = { "value": value };
-
-		$scope.value = value;
-
-		console.log( "Inside $scope.makeMetrics ..." );
-		$http.post( '/metricmaker/', postData )
-		.then( function() { 
-			
-			$scope.makemetricsform.makemetricsbutton.$error = { 
-				submitted: true,
-				error: false
-			}
-
-			$timeout( resetMessages( $scope.makemetricsform.makemetricsbutton ), 10*1000 );
-
-		}, function() {
-
-			$scope.makemetricsform.makemetricsbutton.$error = { 
-				submitted: false,
-				error: true
-			}
-		}); // error
-
-	}
 
 	$scope.tripStacktrace = function() {
 	
@@ -197,6 +164,59 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		});
 
 	};
+
+	$scope.makeerror = function( direction ) {
+
+		var postData = {};
+
+		
+		$http.post( '/error/', postData )
+		.then( function() { 
+			
+			$scope.errorform.errorbutton.$error = { 
+				submitted: true,
+				error: false
+			}
+			console.log( 'Success!' );
+
+			$timeout( resetMessages( $scope.errorform.errorbutton ), 10*1000 );
+
+		}, function() {
+
+			$scope.errorform.errorbutton.$error = { 
+				submitted: false,
+				error: true
+			}
+		}); // error
+
+	}
+
+	$scope.makeMetrics = function( value ) {
+
+		var postData = { "value": value };
+
+		$scope.value = value;
+
+		console.log( "Inside $scope.makeMetrics ..." );
+		$http.post( '/metricmaker/', postData )
+		.then( function() { 
+			
+			$scope.makemetricsform.makemetricsbutton.$error = { 
+				submitted: true,
+				error: false
+			}
+
+			$timeout( resetMessages( $scope.makemetricsform.makemetricsbutton ), 10*1000 );
+
+		}, function() {
+
+			$scope.makemetricsform.makemetricsbutton.$error = { 
+				submitted: false,
+				error: true
+			}
+		}); // error
+
+	}
 
     resetMessages = function( form ) {
     	form.$error = {
