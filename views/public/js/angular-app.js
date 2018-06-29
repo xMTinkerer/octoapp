@@ -30,6 +30,15 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 
 	$scope.oncallData = {};
+
+	$http.get( '/on-call' ).then( resp => {
+		$scope.oncallData = resp.data;
+
+	},
+	err => {
+		console.log( "error getting on-call data" );
+	});
+
 	$scope.triggers = {
 		"tripLog": {
 			"submitted": false,
@@ -68,14 +77,6 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		}
 	}
 
-	$http.get( '/on-call' ).then( resp => {
-		$scope.oncallData = resp.data;
-
-	},
-	err => {
-		console.log( "error getting on-call data" );
-	});
-
 	
 	$scope.tripLog = function() {
 
@@ -83,16 +84,15 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 		$http.post( '/stackdriver/', postData )
 		.then( function() {
-			console.log( 'Successful post!' );
 			$scope.triggers.tripLog = { 
 				submitted: true,
 				error: false,
 				finished: false
 			}
-			$timeout( function() { resetMessages( $scope.triggers.tripLog ) }, 10*1000 );
-		}, function() {
-			console.log( 'Error posting!' );
 
+			$timeout( function() { resetMessages( $scope.triggers.tripLog ) }, 10*1000 );
+
+		}, function() {
 			$scope.triggers.tripLog = { 
 				submitted: false,
 				error: true,
@@ -107,7 +107,6 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 		$http.post( '/appdyn/', postData )
 		.then( function() { 
-			console.log( 'Successful post!' );
 			$scope.triggers.tripAppD = { 
 				submitted: true,
 				error: false,
@@ -116,10 +115,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 			$timeout( function() { resetMessages( $scope.triggers.tripAppD ) }, 10*1000 );
 
-			console.log( $scope.triggers.tripLog );
 		}, function() {
-			console.log( 'Error posting!' );
-
 			$scope.triggers.tripAppD = { 
 				submitted: false,
 				error: true,
@@ -137,8 +133,6 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 		$http.post( '/dynatracer/', postData )
 		.then( function() { 
-			console.log( 'Successful post!' );
-			console.log( $scope.dynatrace.tripDynatraceButton.$error );
 			$scope.triggers.tripDynatrace = { 
 				submitted: true,
 				error: false,
@@ -148,8 +142,6 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.tripDynatrace ) }, 10*1000 );
 
 		}, function() {
-			console.log( 'Error posting!' );
-
 			$scope.triggers.tripDynatrace = { 
 				submitted: false,
 				error: true,
@@ -167,7 +159,6 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 		$http.post( '/stacktracer/', postData )
 		.then( function() { 
-			console.log( 'Successful post!' );
 			$scope.triggers.tripStacktrace = { 
 				submitted: true,
 				error: false,
@@ -177,8 +168,6 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.tripStacktrace ) }, 10*1000 );
 
 		}, function() {
-			console.log( 'Error posting!' );
-
 			$scope.triggers.tripStacktrace = { 
 				submitted: false,
 				error: true,
@@ -208,7 +197,6 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 		$http.post( '/spikecpu', postData )
 		.then( function() {  // success
-			console.log( 'Successful post!' );
 			$scope.triggers.spikeCPU = {
 				submitted: false,
 				error: false,
@@ -238,7 +226,6 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		
 		$http.post( '/error/', postData )
 		.then( function() { 
-			
 			$scope.triggers.makeError = { 
 				submitted: true,
 				error: false,
@@ -248,7 +235,6 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.makeError ) }, 10*1000 );
 
 		}, function() {
-
 			$scope.triggers.makeError = { 
 				submitted: false,
 				error: true,
@@ -265,8 +251,8 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		$scope.value = value;
 
 		$http.post( '/metricmaker/', postData )
+
 		.then( function() { 
-			
 			$scope.triggers.makeMetrics = { 
 				submitted: true,
 				error: false,
@@ -276,7 +262,6 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.makeMetrics ) }, 10*1000 );
 
 		}, function() {
-
 			$scope.triggers.makeMetrics = { 
 				submitted: false,
 				error: true,
