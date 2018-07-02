@@ -36,9 +36,30 @@
 
       <div class="row appGroup">
         <div class="col-md-3 cellBorder">
+          <form name="stackdriver">
+            <button name="tripLogButton" ng-model="tripLogButton" ng-click="tripLog()" button-validator class="btn btn-primary">Trigger GCP Log Entry <span class="glyphicon glyphicon-th-list"></span></button>
+            <span ng-messages="triggers.tripLog" role="alert">
+              <span ng-message="submitted">Successfully logged to GCP</span>
+              <span ng-message="error">Error logging to GCP</span>
+            </span>
+          </form>
+        </div>
+
+        <div class="col-md-3 cellBorder">
+          <img src="/public/img/stackdriver-logo.png" height="40" align="left">
+        </div> 
+
+        <div class="col-md-3 cellBorder">
+          <on-call product="Stackdriver" oncalldata="oncallData['Stackdriver']"></on-call>
+        </div>
+        
+      </div>
+
+      <div class="row appGroup">
+        <div class="col-md-3 cellBorder">
           <form name="appdynamics">
             <button name="tripAppDButton" ng-model="tripAppDButton" ng-click="tripAppD()" class="btn btn-primary">Trigger AppDynamics Error <span class="glyphicon glyphicon-console"></span></button>
-            <div ng-messages="stacktrace.tripAppDButton.$error" role="alert">
+            <div ng-messages="triggers.tripAppD" role="alert">
               <div ng-message="submitted">Successfully sent Error to AppDynamics</div>
               <div ng-message="error">Error sending error to AppDynamics</div>
             </div>
@@ -46,7 +67,7 @@
         </div>
 
         <div class="col-md-3 cellBorder">
-          <img src="/public/img/appdynamics-logo.png" height="20" align="left">
+          <img src="/public/img/appdynamics-logo.png" height="25" align="left">
         </div> 
 
         <div class="col-md-3 cellBorder">
@@ -59,7 +80,7 @@
         <div class="col-md-3 cellBorder">
           <form name="dynatrace">
             <button name="tripDynatraceButton" ng-model="tripDynatraceButton" ng-click="tripDynatrace()" class="btn btn-primary">Trigger Stacktrace <span class="glyphicon glyphicon-console"></span></button>
-            <div ng-messages="stacktrace.tripDynatraceButton.$error" role="alert">
+            <div ng-messages="triggers.tripDynatrace" role="alert">
               <div ng-message="submitted">Successfully wrote stack trace to ./logs/dynatracer.log</div>
               <div ng-message="error">Error writing stack trace</div>
             </div>
@@ -80,7 +101,7 @@
         <div class="col-md-3 cellBorder">
           <form name="stacktrace">
             <button name="tripStacktraceButton" ng-model="tripStacktraceButton" ng-click="tripStacktrace()" class="btn btn-primary">Trigger Stacktrace <span class="glyphicon glyphicon-console"></span></button>
-            <div ng-messages="stacktrace.tripStacktraceButton.$error" role="alert">
+            <div ng-messages="triggers.tripStacktrace" role="alert">
               <div ng-message="submitted">Successfully wrote stack trace to ./logs/stacktrace.log</div>
               <div ng-message="error">Error writing stack trace</div>
             </div>
@@ -89,7 +110,7 @@
         
 
         <div class="col-md-3 cellBorder">
-          <img src="/public/img/splunk-logo.png" height="50" align="left">
+          <img src="/public/img/splunk-logo.png" height="40" align="left">
         </div>
 
         <div class="col-md-3 cellBorder">
@@ -107,9 +128,10 @@
               <button name="cpuspikebutton" ng-model="cpuspikebutton" ng-click="spikeCPU()" class="btn btn-primary">CPU Spike <span class="glyphicon glyphicon-equalizer"></span></button>
             </div>
             
-            <div ng-messages="cpuspike.cpuspikebutton.$error" role="alert">
+            <div ng-messages="triggers.spikeCPU" role="alert">
               <div ng-message="submitted">Starting spike for {{spikeCPUseconds}} seconds</div>
               <div ng-message="finished">Finished spike</div>
+              <div ng-message="error">Error spiking CPU</div> 
             </div>
             
           </form>
@@ -129,14 +151,14 @@
         <div class="col-md-3 cellBorder">
           <form name="errorform">
             <button name="errorbutton" ng-model="errorbutton" ng-click="makeerror()" class="btn btn-primary">Throw Error <span class="glyphicon glyphicon-alert"></span></button>
-            <div ng-messages="errorform.errorbutton.$error" role="alert">
+            <div ng-messages="triggers.makeError" role="alert">
               <div ng-message="submitted">Made ink!</div>
-              <div ng-message="error">Bad happened</div>
+              <div ng-message="finished">Bad happened</div>
             </div>
           </form>
         </div>
         <div class="col-md-3 cellBorder">
-          <img src="/public/img/NewRelic-logo-bug.png" height="50" align="left">
+          <img src="/public/img/NewRelic-logo-bug.png" height="35" align="left">
         </div>
 
         <div class="col-md-3 cellBorder">
@@ -153,8 +175,8 @@
             <button name="makemetricsbutton" ng-model="makemetricsbutton" ng-click="makeMetrics( 40 )" class="btn btn-primary">Set Metric: 40</button>
             <button name="makemetricsbutton" ng-model="makemetricsbutton" ng-click="makeMetrics( 20 )" class="btn btn-primary">Set Metric: 20</button>
             <br/>
-            <div ng-messages="makemetricsform.makemetricsbutton.$error" role="alert">
-              <div ng-message="submitted">Set metric to {{$scope.value}}</div>
+            <div ng-messages="triggers.makeMetrics" role="alert">
+              <div ng-message="submitted">Set metric to {{ value }}</div>
               <div ng-message="error">Error moving someMetric. Is Prometheus up?</div>
             </div>
           </form>

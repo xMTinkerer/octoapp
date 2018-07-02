@@ -13,6 +13,19 @@ octoapp.directive( 'onCall', function() {
 	}
 });
 
+octoapp.directive( 'buttonValidator', function (){ 
+	return {
+	   require: 'ngModel',
+	   link: function(scope, elem, attr, ngModel) {
+		   ngModel.$parsers.push( function() {
+			  ngModel.$setValidity( 'submitted', false );
+			  ngModel.$setValidity( 'error', false );
+			  ngModel.$setValidity( 'finished', false );
+		   });
+	   }
+	};
+ });
+ 
 octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 
@@ -26,6 +39,67 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		console.log( "error getting on-call data" );
 	});
 
+	$scope.triggers = {
+		"tripLog": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		},
+		"tripAppD": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		},
+		"tripDynatrace": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		},
+		"tripStacktrace": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		},
+		"spikeCPU": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		},
+		"makeError": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		},
+		"makeMetrics": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		}
+	}
+
+	
+	$scope.tripLog = function() {
+
+		var postData = { };
+
+		$http.post( '/stackdriver/', postData )
+		.then( function() {
+			$scope.triggers.tripLog = { 
+				submitted: true,
+				error: false,
+				finished: false
+			}
+
+			$timeout( function() { resetMessages( $scope.triggers.tripLog ) }, 10*1000 );
+
+		}, function() {
+			$scope.triggers.tripLog = { 
+				submitted: false,
+				error: true,
+				finished: false
+			}
+		}); // error
+	};
 
 	$scope.tripAppD = function() {
 
@@ -33,20 +107,19 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 		$http.post( '/appdyn/', postData )
 		.then( function() { 
-			console.log( 'Successful post!' );
-			$scope.appdynamics.tripAppDButton.$error = { 
+			$scope.triggers.tripAppD = { 
 				submitted: true,
-				error: false
+				error: false,
+				finished: false
 			}
 
-			$timeout( resetMessages( $scope.appdynamics.tripAppDButton ), 10*1000 );
+			$timeout( function() { resetMessages( $scope.triggers.tripAppD ) }, 10*1000 );
 
 		}, function() {
-			console.log( 'Error posting!' );
-
-			$scope.appdynamics.tripAppDButton.$error = { 
+			$scope.triggers.tripAppD = { 
 				submitted: false,
-				error: true
+				error: true,
+				finished: false
 			}
 		}); // error
 
@@ -60,80 +133,22 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 		$http.post( '/dynatracer/', postData )
 		.then( function() { 
-			console.log( 'Successful post!' );
-			$scope.dynatrace.tripDynatraceButton.$error = { 
+			$scope.triggers.tripDynatrace = { 
 				submitted: true,
-				error: false
+				error: false,
+				finished: false
 			}
 
-			$timeout( resetMessages( $scope.dynatrace.tripDynatraceButton ), 10*1000 );
+			$timeout( function() { resetMessages( $scope.triggers.tripDynatrace ) }, 10*1000 );
 
 		}, function() {
-			console.log( 'Error posting!' );
-
-			$scope.dynatrace.tripDynatraceButton.$error = { 
+			$scope.triggers.tripDynatrace = { 
 				submitted: false,
-				error: true
+				error: true,
+				finished: false
 			}
 		}); // error
 	};
-
-
-
-	$scope.makeerror = function( direction ) {
-
-		var postData = {};
-
-		
-		$http.post( '/error/', postData )
-		.then( function() { 
-			
-			$scope.errorform.errorbutton.$error = { 
-				submitted: true,
-				error: false
-			}
-			console.log( 'Success!' );
-
-			$timeout( resetMessages( $scope.errorform.errorbutton ), 10*1000 );
-
-		}, function() {
-
-			$scope.errorform.errorbutton.$error = { 
-				submitted: false,
-				error: true
-			}
-		}); // error
-
-	}
-
-
-
-	$scope.makeMetrics = function( value ) {
-
-		var postData = { "value": value };
-
-		$scope.value = value;
-
-		console.log( "Inside $scope.makeMetrics ..." );
-		$http.post( '/metricmaker/', postData )
-		.then( function() { 
-			
-			$scope.makemetricsform.makemetricsbutton.$error = { 
-				submitted: true,
-				error: false
-			}
-
-			$timeout( resetMessages( $scope.makemetricsform.makemetricsbutton ), 10*1000 );
-
-		}, function() {
-
-			$scope.makemetricsform.makemetricsbutton.$error = { 
-				submitted: false,
-				error: true
-			}
-		}); // error
-
-	}
 
 	$scope.tripStacktrace = function() {
 	
@@ -144,20 +159,19 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 		$http.post( '/stacktracer/', postData )
 		.then( function() { 
-			console.log( 'Successful post!' );
-			$scope.stacktrace.tripStacktraceButton.$error = { 
+			$scope.triggers.tripStacktrace = { 
 				submitted: true,
-				error: false
+				error: false,
+				finished: false
 			}
 
-			$timeout( resetMessages( $scope.stacktrace.tripStacktraceButton ), 10*1000 );
+			$timeout( function() { resetMessages( $scope.triggers.tripStacktrace ) }, 10*1000 );
 
 		}, function() {
-			console.log( 'Error posting!' );
-
-			$scope.stacktrace.tripStacktraceButton.$error = { 
+			$scope.triggers.tripStacktrace = { 
 				submitted: false,
-				error: true
+				error: true,
+				finished: false
 			}
 		}); // error
 
@@ -166,8 +180,9 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 	$scope.spikeCPU = function() {
 
 		
-		$scope.cpuspike.cpuspikebutton.$error = {
+		$scope.triggers.spikeCPU = {
 			submitted: true,
+			error: false,
 			finished: false
 		};
 
@@ -182,28 +197,84 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 		$http.post( '/spikecpu', postData )
 		.then( function() {  // success
-			console.log( 'Successful post!' );
-			$scope.cpuspike.cpuspikebutton.$error = {
+			$scope.triggers.spikeCPU = {
 				submitted: false,
+				error: false,
 				finished: true
 			};
 
-			$timeout( resetMessages( $scope.cpuspike.cpuspikebutton ), 10*1000 );
+			$timeout( function() { resetMessages( $scope.triggers.spikeCPU ) }, 10*1000 );
 
 
 
 		}, function() {  // error
-			console.log( 'Error posting!' );
+			$scope.triggers.spikeCPU = {
+				submitted: false,
+				error: true,
+				finished: true
+			}
+
+			$timeout( function() { resetMessages( $scope.triggers.spikeCPU ) }, 10*1000 );
 		});
 
 	};
 
+	$scope.makeerror = function( direction ) {
+
+		var postData = {};
+
+		
+		$http.post( '/error/', postData )
+		.then( function() { 
+			$scope.triggers.makeError = { 
+				submitted: true,
+				error: false,
+				finished: false
+			}
+
+			$timeout( function() { resetMessages( $scope.triggers.makeError ) }, 10*1000 );
+
+		}, function() {
+			$scope.triggers.makeError = { 
+				submitted: false,
+				error: true,
+				finished: false
+			}
+		}); // error
+
+	}
+
+	$scope.makeMetrics = function( value ) {
+
+		var postData = { "value": value };
+
+		$scope.value = value;
+
+		$http.post( '/metricmaker/', postData )
+
+		.then( function() { 
+			$scope.triggers.makeMetrics = { 
+				submitted: true,
+				error: false,
+				finished: false
+			}
+
+			$timeout( function() { resetMessages( $scope.triggers.makeMetrics ) }, 10*1000 );
+
+		}, function() {
+			$scope.triggers.makeMetrics = { 
+				submitted: false,
+				error: true,
+				finished: false
+			}
+		}); // error
+
+	}
+
     resetMessages = function( form ) {
-    	form.$error = {
-    		submitted: false,
-    		error: false,
-    		finished: false
-    	}
+		form.submitted = false;
+		form.error = false;
+		form.finished = false;
     };
 
 } );
