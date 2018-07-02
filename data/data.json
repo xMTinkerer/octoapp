@@ -52,7 +52,7 @@
    ],
    "simData": {
       "Stackdriver": {
-         "endpoint": "https://advisors.na5.xmatters.com/api/integration/1/functions/",
+         "endpoint": "https://advisors.na5.xmatters.com/api/integration/1/functions/370708a6-3ed3-4201-8a61-f1b54d260b4a/triggers?apiKey=99d30656-3b07-471b-b31f-06ff3d690130",
          "basicAuth": false,
          "payload": {
             "incident": {

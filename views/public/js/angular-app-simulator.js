@@ -68,12 +68,14 @@ octoapp.controller( 'octoSimController', function( $scope, $http, $timeout, $q, 
 			$scope.is_finished = true;
 			$scope.theMessageHeader = "Success!";
 			$scope.theMessage = "Successfully sent simulation";
+			$timeout( function() { $scope.is_finished = false; }, 10*1000 );
 
 		}, function() {
 			console.log( 'Error posting!' );
 			$scope.is_finished = true;
 			$scope.theMessageHeader = "Error!";
 			$scope.theMessage = "Errors happened. Check console and logs!";
+			$timeout( function() { $scope.is_finished = false; }, 10*1000 );
 
 		}); // error
 
