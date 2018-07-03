@@ -1,55 +1,32 @@
 // Stacktracer
 const winston = require( 'winston' );
-const Promise = require( 'promise' );
 const express = require( 'express' );
 const router  = express.Router();
+const exec = require( 'child_process' ).exec;
 
-
-
-
-var shouldRun = true;
 
 router.post('/spikeCPU', function( req, res ) {
   
   var spikecpuLogger = winston.loggers.get( 'spikecputracer' );
+
   var body = req.body;
 
   spikecpuLogger.info( 'Spiking for ' + body.seconds + ' seconds' );
 
-  //setTimeout( stopCPUSpike, req.seconds*1000 );
-  //blockCpu();
+  exec('./routes/spikecpu.sh ' + body.seconds,
+    function (error, stdout, stderr) {
+      if (error !== null) {
+        console.log(error);
+      } else {
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + stderr);
+      }
+  });
 
-  var promise = blockCpuFor( body.seconds*1000, spikecpuLogger );
-
-  promise.then( function( str ) { console.log( "Finished! str: " + str ); } );
-
-  res.status( 200 ).send( 'OK' );
+  res.status( 200 ).send( 'Done' );
   return;
 
 });
-
-
-function blockCpuFor( ms, logger ) {
-
-
-
-  return new Promise( function( fulfill, reject ) {
-    var start = new Date().getTime();
-    var result = 0;
-
-    while( new Date().getTime() < start + ms ) {
-      result += Math.random() * Math.random();
-    }
-    var now = new Date().getTime();
-
-    fulfill( 'Woo! Str here' );
-  });
-}
-
-
-
-
-
 
 
 module.exports = router;

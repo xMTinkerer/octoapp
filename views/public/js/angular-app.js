@@ -197,24 +197,28 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 		$http.post( '/spikecpu', postData )
 		.then( function() {  // success
-			$scope.triggers.spikeCPU = {
-				submitted: false,
-				error: false,
-				finished: true
-			};
+			$timeout( function() { 
+				$scope.triggers.spikeCPU = {
+					submitted: false, 
+					error: false, 
+					finished: true 
+				}
+			}, postData.seconds*1000);
 
-			$timeout( function() { resetMessages( $scope.triggers.spikeCPU ) }, 10*1000 );
+			$timeout( function() { resetMessages( $scope.triggers.spikeCPU ) }, (postData.seconds+10)*1000 );
 
 
 
 		}, function() {  // error
-			$scope.triggers.spikeCPU = {
-				submitted: false,
-				error: true,
-				finished: true
-			}
+			$timeout( function() { 
+				$scope.triggers.spikeCPU = {
+					submitted: false, 
+					error: true, 
+					finished: false 
+				}
+			}, postData.seconds*1000);
 
-			$timeout( function() { resetMessages( $scope.triggers.spikeCPU ) }, 10*1000 );
+			$timeout( function() { resetMessages( $scope.triggers.spikeCPU ) }, (postData.seconds+10)*1000 );
 		});
 
 	};
