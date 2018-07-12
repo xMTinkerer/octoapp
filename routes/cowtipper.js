@@ -48,7 +48,7 @@ router.post('/cowtipper', function( req, res ) {
             'json': true,
             'body': payload
         };
-        console.log( options );
+
         var data;
 
         request( options, ( err, res, body ) => {
@@ -56,7 +56,6 @@ router.post('/cowtipper', function( req, res ) {
                 console.log( err );
             data = res;
         });
-        console.log ( data );
 
     }
     
