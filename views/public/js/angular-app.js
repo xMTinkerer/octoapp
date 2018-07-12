@@ -60,6 +60,11 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			"error": false,
 			"finished": false
 		},
+		"createAlert": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		},
 		"spikeCPU": {
 			"submitted": false,
 			"error": false,
@@ -126,8 +131,6 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 	};
 
 	$scope.tripDynatrace = function() {
-		
-	
 
 		var postData = { };
 
@@ -151,7 +154,6 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 	};
 
 	$scope.tripStacktrace = function() {
-	
 
 		var postData = {
 			name: "value"
@@ -169,6 +171,30 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 		}, function() {
 			$scope.triggers.tripStacktrace = { 
+				submitted: false,
+				error: true,
+				finished: false
+			}
+		}); // error
+
+	};
+
+	$scope.createAlert = function() {
+
+		var postData = {};
+
+		$http.post( '/cowtipper/', postData )
+		.then( function() { 
+			$scope.triggers.createAlert = { 
+				submitted: true,
+				error: false,
+				finished: false
+			}
+
+			$timeout( function() { resetMessages( $scope.triggers.createAlert ) }, 10*1000 );
+
+		}, function() {
+			$scope.triggers.createAlert = { 
 				submitted: false,
 				error: true,
 				finished: false
