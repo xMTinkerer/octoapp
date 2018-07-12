@@ -101,7 +101,7 @@
                 "receiver": "Cloud DevOps",
                 "category": "Created",
                 "created_at": "Mon Jul 02 2018 18:33:09 GMT-0000 (UTC)",
-                "description": "Created Situation",
+                "description": "Created Alert",
                 "engagement_type": "Automatic",
                 "first_event_time": "Unknown",
                 "internal_priority": "Clear",
