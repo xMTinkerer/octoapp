@@ -95,7 +95,7 @@
             }
         },
         "Moogsoft": {
-            "endpoint": "https://advisors.na5.xmatters.com/api/integration/1/functions/a0b73361-dd9c-4637-afc7-1d200281d2bb/triggers?apiKey=176d5557-c54a-4940-8691-4852556789fc",
+            "endpoint": "https://advisors.na5.xmatters.com/api/integration/1/functions/acd46733-795d-48ca-91b9-6d1066fdb339/triggers",
             "basicAuth": false,
             "payload": {
                 "receiver": "Cloud DevOps",
