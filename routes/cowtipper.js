@@ -35,7 +35,7 @@ router.post('/cowtipper', function( req, res ) {
         var APP = 'octoapp';
         
         const options = {
-            'uri': 'https://rabidwilderness.moogsoft.io/events/webhook_webhook1',
+            'uri': 'https://xmatters.moogsoft.io/events/webhook_inboundoctoapp',
             'method': 'POST',
             'auth': {
                 'username': MOOG_USERNAME,
