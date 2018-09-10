@@ -50,6 +50,11 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			"error": false,
 			"finished": false
 		},
+		"tripBigPanda": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		},
 		"tripDynatrace": {
 			"submitted": false,
 			"error": false,
@@ -60,7 +65,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			"error": false,
 			"finished": false
 		},
-		"createAlert": {
+		"tripMoogsoft": {
 			"submitted": false,
 			"error": false,
 			"finished": false
@@ -130,6 +135,20 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 	};
 
+	$scope.tripBigPanda = function() {
+		var postData = { };
+
+		$http.post( '/bigpanda/', postData )
+		.then( function() {
+			$scope.triggers.tripBigPanda.submitted = true;
+
+			$timeout( function() { resetMessages( $scope.triggers.tripBigPanda ) }, 10*1000 );
+
+		}, function() {
+			$scope.triggers.tripBigPanda.error = true;
+		});
+	};
+
 	$scope.tripDynatrace = function() {
 
 		var postData = { };
@@ -179,13 +198,13 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 	};
 
-	$scope.createAlert = function() {
+	$scope.tripMoogsoft = function() {
 
-		var postData = {};
+		var postData = {  };
 
 		$http.post( '/cowtipper/', postData )
 		.then( function() { 
-			$scope.triggers.createAlert = { 
+			$scope.triggers.tripMoogsoft = { 
 				submitted: true,
 				error: false,
 				finished: false
@@ -194,7 +213,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.createAlert ) }, 10*1000 );
 
 		}, function() {
-			$scope.triggers.createAlert = { 
+			$scope.triggers.tripMoogsoft = { 
 				submitted: false,
 				error: true,
 				finished: false

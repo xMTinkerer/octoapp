@@ -4,34 +4,35 @@ const router  = express.Router();
 
 const request = require( 'request' );
 
-const MOOG_USERNAME = process.env.MOOG_USERNAME;
-const MOOG_PASSWORD = process.env.MOOG_PASSWORD;
+const BIGPANDA_TOKEN = process.env.BIGPANDA_TOKEN;
+const BIGPANDA_KEY = process.env.BIGPANDA_KEY;
 
-router.post('/cowtipper', function( req, res ) {
+router.post('/bigpanda', function( req, res ) {
     
-    var body = req.body;
+    var payload = { 
+        "app_key": BIGPANDA_KEY, 
+        "status": "critical", 
+        "host": "OctoApp", 
+        "check": "CPU overloaded"
+    }
       
-      createAlert( body );
+      triggerAlert( payload );
     
       res.status( 200 ).send( 'Done' );
     
     });
     
     
-    createAlert = function( payload ) {
+    triggerAlert = function( payload ) {
     
         var APP = 'octoapp';
         
         const options = {
-            'uri': 'https://xmatters.moogsoft.io/events/webhook_inboundoctoapp',
+            'uri': 'https://api.bigpanda.io/data/v2/alerts',
             'method': 'POST',
-            'auth': {
-                'username': MOOG_USERNAME,
-                'password': MOOG_PASSWORD
-            },
             'headers': {
                 "Content-Type": "application/json",
-	            "Authorization": "Basic <base64 encoded credentials>"
+	            "Authorization": "Bearer " + BIGPANDA_TOKEN
             },
             'json': true,
             'body': payload
