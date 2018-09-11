@@ -6,19 +6,20 @@ const request = require( 'request' );
 
 const BIGPANDA_TOKEN = process.env.BIGPANDA_TOKEN;
 const BIGPANDA_KEY = process.env.BIGPANDA_KEY;
+//const BIGPANDA_INCIDENT = process.env.BIGPANDA_INCIDENT;
 
 router.post('/bigpanda', function( req, res ) {
     
     var payload = { 
         "app_key": BIGPANDA_KEY, 
         "status": "critical", 
-        "host": "OctoApp", 
+        "host": "OctoApp - " + Math.floor( Math.random() * 1000 + 1), 
         "check": "CPU overloaded"
     }
-      
-      triggerAlert( payload );
     
-      res.status( 200 ).send( 'Done' );
+    triggerAlert( payload );
+
+    res.status( 200 ).send( 'Done' );
     
     });
     
@@ -37,14 +38,14 @@ router.post('/bigpanda', function( req, res ) {
             'json': true,
             'body': payload
         };
-
+        
         var data;
 
         request( options, ( err, res, body ) => {
             if ( err )
                 console.log( err );
-            data = res;
         });
+        
 
     }
     
