@@ -8,6 +8,13 @@
             "jira-group": ""
         },
         {
+            "product": "BigPanda",
+            "group": "Octoapp Support",
+            "url": "",
+            "service-now-group": "",
+            "jira-group": ""
+        },
+        {
             "product": "Dynatrace",
             "group": "Application Performance",
             "url": "https://account.dynatrace.com/basweb/myaccount",
@@ -92,6 +99,53 @@
                 "ProblemURL": "https://mobilecontent.ruxit.com/common/ruxit-launch.html?url=https%3A%2F%2Feuh17336.live.dynatrace.com%2F%23problems%2Fproblemdetails%3Bpid%3D-6871243565276870889&amp;pid=-6871243565276870889&amp;tid=euh17336&amp;src=email&amp;app=ruxit",
                 "State": "RESOLVED",
                 "Tags": ""
+            }
+        },
+        "BigPanda": {
+            "endpoint": "https://advisors.na5.xmatters.com/api/integration/1/functions/b481f53d-e24b-4258-bde4-5db0ea43d8d1/triggers?apiKey=f2d49315-7cd3-467a-b892-c1446ab1b6d7",
+            "basicAuth": false,
+            "payload": {
+                "incident": {
+                    "id":"5b96ec3e4c6fe607f2db2eeb",
+                    "status":"Critical",
+                    "active":true,
+                    "severity":"Critical",
+                    "flapping":false,
+                    "resolved":false,
+                    "snooze": {
+                        "snoozed":false,
+                        "wake":null,
+                        "autoCancel":false
+                    },
+                    "startedOn":0,
+                    "changedOn":0,
+                    "updatedOn":0,
+                    "endedOn":null,
+                    "alerts": [{
+                        "id":"5b96ec3e4c6fe607f2db2eeb",
+                        "status":"Critical",
+                        "startedOn":0,
+                        "endedOn":null,
+                        "changedOn":0,
+                        "updatedOn":0,
+                        "active":true,
+                        "primaryProperty":"host",
+                        "secondaryProperty":"check",
+                        "sourceSystem":"api.xmattersinformation",
+                        "description":null,
+                        "tags":[{
+                            "name":"host",
+                            "value":"xMatters OctoApp"
+                        },
+                        {
+                            "name":"check",
+                            "value":"CPU overloaded"
+                        }]
+                    }]
+                },
+                "links": {
+                    "landingPage":"http://bigp.io/c77d5c20"
+                }
             }
         },
         "Moogsoft": {

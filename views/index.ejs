@@ -127,9 +127,9 @@
       <div class="row appGroup">
         <div class="col-md-3 cellBorder">
           <form name="moogsoft">
-            <button name="createAlertButton" ng-model="createAlertButton" ng-click="createAlert()" class="btn btn-primary">Create Alert <img src="/public/img/moogsoft-icon.png" alt="Mooooo" height="20" width="20"></button>
+            <button name="tripMoogsoftButton" ng-model="tripMoogsoftButton" ng-click="tripMoogsoft()" class="btn btn-primary">Create Alert <img src="/public/img/moogsoft-icon.png" alt="Mooooo" height="20" width="20"></button>
             <br></br>
-            <div ng-messages="triggers.createAlert" role="alert">
+            <div ng-messages="triggers.tripMoogsoft" role="alert">
               <div ng-message="submitted">Successfully created Alert</div>
               <div ng-message="error">Error creating Alert</div>
             </div>
@@ -144,6 +144,30 @@
         <div class="col-md-3 cellBorder">
           <on-call product="Moogsoft" oncalldata="oncallData['Moogsoft']"></on-call>
         </div>
+
+      </div>
+      
+      <div class="row appGroup">
+        <div class="col-md-3 cellBorder">
+          <form name="stacktrace">
+            <button name="tripBigPandaButton" ng-model="tripBigPandaButton" ng-click="tripBigPanda()" class="btn btn-primary">Trigger Alert <span class="glyphicon glyphicon-alert"></span></button>
+            <br></br>
+            <div ng-messages="triggers.tripStacktrace" role="alert">
+              <div ng-message="submitted">Successfully created Alert</div>
+              <div ng-message="error">Error creating Alert</div>
+            </div>
+          </form>
+        </div>
+        
+
+        <div class="col-md-3 cellBorder">
+          <img src="/public/img/bigpanda-logo.png" height="40" align="left">
+        </div>
+
+        <div class="col-md-3 cellBorder">
+          <on-call product="BigPanda" oncalldata="oncallData['BigPanda']"></on-call>
+        </div>
+
 
       </div>
 

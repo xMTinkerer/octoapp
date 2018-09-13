@@ -9,21 +9,9 @@ const MOOG_PASSWORD = process.env.MOOG_PASSWORD;
 
 router.post('/cowtipper', function( req, res ) {
     
-    var payload = { 
-        signature: "octoapp:Alert1",
-        source: "octoapp.xmatters.com",
-        source_id: "octoapp",
-        external_id: "12345",
-        agent_location: "California", 
-        severity: 5,
-        type: "type",
-        manager: "octoapp",
-        class: "class",
-        description: "moooooooo",
-        agent_time: "1530544543" 
-    }
+    var body = req.body;
       
-      createAlert( payload );
+      createAlert( body );
     
       res.status( 200 ).send( 'Done' );
     

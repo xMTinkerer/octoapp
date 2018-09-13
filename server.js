@@ -105,6 +105,7 @@ app.use( passport.session() );
 
 app.use( require( './routes/index'       ) );
 app.use( require( './routes/cowtipper'   ) );
+app.use( require( './routes/bigpanda'    ) );
 app.use( require( './routes/stackdriver' ) );
 app.use( require( './routes/stacktracer' ) );
 app.use( require( './routes/spikecpu'    ) );
