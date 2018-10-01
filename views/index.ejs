@@ -7,7 +7,7 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 
-    <link rel='stylesheet' href='/public/stylesheets/style.css' />    
+    <link rel='stylesheet' href='/public/stylesheets/style.css' />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
@@ -23,7 +23,7 @@
   <body ng-controller="octoController">
     <div class="container-fluid">
 
-      <% include header %> 
+      <% include header %>
 
 <% if( !user ) { %>
       <div class="row">
@@ -48,12 +48,12 @@
 
         <div class="col-md-3 cellBorder">
           <img src="/public/img/stackdriver-logo.png" height="40" align="left">
-        </div> 
+        </div>
 
         <div class="col-md-3 cellBorder">
           <on-call product="Stackdriver" oncalldata="oncallData['Stackdriver']"></on-call>
         </div>
-        
+
       </div>
 
       <div class="row appGroup">
@@ -70,12 +70,12 @@
 
         <div class="col-md-3 cellBorder">
           <img src="/public/img/appdynamics-logo.png" height="25" align="left">
-        </div> 
+        </div>
 
         <div class="col-md-3 cellBorder">
           <on-call product="AppDynamics" oncalldata="oncallData['AppDynamics']"></on-call>
         </div>
-        
+
       </div>
 
       <div class="row appGroup">
@@ -92,14 +92,14 @@
 
         <div class="col-md-3 cellBorder">
           <img src="/public/img/dynatrace-logo.png" height="50" align="left">
-        </div> 
+        </div>
 
         <div class="col-md-3 cellBorder">
           <on-call product="Dynatrace" oncalldata="oncallData['Dynatrace']"></on-call>
         </div>
-        
+
       </div>
-        
+
       <div class="row appGroup">
         <div class="col-md-3 cellBorder">
           <form name="stacktrace">
@@ -111,7 +111,7 @@
             </div>
           </form>
         </div>
-        
+
 
         <div class="col-md-3 cellBorder">
           <img src="/public/img/splunk-logo.png" height="40" align="left">
@@ -135,8 +135,8 @@
             </div>
           </form>
         </div>
-          
-  
+
+
         <div class="col-md-3 cellBorder">
           <img src="/public/img/moogsoft-logo.png" height="40" align="left">
         </div>
@@ -146,19 +146,19 @@
         </div>
 
       </div>
-      
+
       <div class="row appGroup">
         <div class="col-md-3 cellBorder">
           <form name="stacktrace">
             <button name="tripBigPandaButton" ng-model="tripBigPandaButton" ng-click="tripBigPanda()" class="btn btn-primary">Trigger Alert <span class="glyphicon glyphicon-alert"></span></button>
             <br></br>
-            <div ng-messages="triggers.tripStacktrace" role="alert">
+            <div ng-messages="triggers.tripBigPanda" role="alert">
               <div ng-message="submitted">Successfully created Alert</div>
               <div ng-message="error">Error creating Alert</div>
             </div>
           </form>
         </div>
-        
+
 
         <div class="col-md-3 cellBorder">
           <img src="/public/img/bigpanda-logo.png" height="40" align="left">
@@ -173,7 +173,7 @@
 
       <div class="row appGroup">
         <div class="col-md-3 cellBorder">
-          
+
           <form name="cpuspike" class="form-inline">
             <div class="form-group">
               <button name="cpuspikebutton" ng-model="cpuspikebutton" ng-click="spikeCPU()" class="btn btn-primary">CPU Spike <span class="glyphicon glyphicon-equalizer"></span></button>
@@ -182,7 +182,7 @@
             <div ng-messages="triggers.spikeCPU" role="alert">
               <div ng-message="submitted">Starting spike for {{spikeCPUseconds}} seconds</div>
               <div ng-message="finished">Finished spike</div>
-              <div ng-message="error">Error spiking CPU</div> 
+              <div ng-message="error">Error spiking CPU</div>
             </div>
           </form>
         </div>
