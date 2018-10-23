@@ -200,7 +200,19 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 	$scope.tripMoogsoft = function() {
 
-		var postData = {  };
+		var postData = {
+ 			"signature":"my_test_box:application:Network",
+ 			"source_id":"198.51.100",
+ 			"external_id":"id-1234",
+ 			"manager":"my_manager",
+ 			"source":"my_test_box",
+ 			"class":"application",
+ 			"agent_location":"my_agent_location",
+ 			"type":"Network",
+ 			"severity":3,
+ 			"description":"high network utilization in application A",
+ 			"agent_time":"1411134582"
+ 		};
 
 		$http.post( '/cowtipper/', postData )
 		.then( function() { 

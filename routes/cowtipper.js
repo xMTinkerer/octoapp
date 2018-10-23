@@ -17,6 +17,7 @@ router.post('/cowtipper', function( req, res ) {
     
     });
     
+
     
     createAlert = function( payload ) {
     
@@ -30,8 +31,7 @@ router.post('/cowtipper', function( req, res ) {
                 'password': MOOG_PASSWORD
             },
             'headers': {
-                "Content-Type": "application/json",
-	            "Authorization": "Basic <base64 encoded credentials>"
+                "Content-Type": "application/json"	            
             },
             'json': true,
             'body': payload
