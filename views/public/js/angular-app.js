@@ -84,10 +84,45 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			"submitted": false,
 			"error": false,
 			"finished": false
-		}
+		},
+		"triggerFlood": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		},
+		"tripCloudwatch": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		},
 	}
 
+
+	$scope.tripCloudwatch = function() {
+
+		var postData = { };
+
+		$http.post( '/cloudwatch/', postData )
+		.then( function() { 
+			$scope.triggers.tripCloudwatch = { 
+				submitted: true,
+				error: false,
+				finished: false
+			}
+
+			$timeout( function() { resetMessages( $scope.triggers.tripCloudwatch ) }, 10*1000 );
+
+		}, function() {
+			$scope.triggers.tripCloudwatch = { 
+				submitted: false,
+				error: true,
+				finished: false
+			}
+		}); // error
+
+	}
 	
+
 	$scope.tripLog = function() {
 
 		var postData = { };
@@ -324,6 +359,32 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 		}, function() {
 			$scope.triggers.makeMetrics = { 
+				submitted: false,
+				error: true,
+				finished: false
+			}
+		}); // error
+
+	}
+
+	$scope.triggerFlood = function( ) {
+
+		var postData = {};
+
+
+		$http.post( '/triggerflood/', postData )
+
+		.then( function() { 
+			$scope.triggers.triggerFlood = { 
+				submitted: true,
+				error: false,
+				finished: false
+			}
+
+			$timeout( function() { resetMessages( $scope.triggers.triggerFlood ) }, 10*1000 );
+
+		}, function() {
+			$scope.triggers.triggerFlood = { 
 				submitted: false,
 				error: true,
 				finished: false

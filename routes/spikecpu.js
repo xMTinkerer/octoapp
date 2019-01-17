@@ -11,6 +11,14 @@ router.post('/spikeCPU', function( req, res ) {
 
   var body = req.body;
 
+  // Shell execution concerns. 
+  if( (typeof body.seconds) != 'number' ) {
+     spikecpuLogger.error( '"' + body.seconds + '" is not a number! Exiting' );
+     res.status( 500 ).send( 'Error' );
+     return;
+  }
+
+
   spikecpuLogger.info( 'Spiking for ' + body.seconds + ' seconds' );
 
   exec('./routes/spikecpu.sh ' + body.seconds,
