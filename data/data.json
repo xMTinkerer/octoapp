@@ -1,6 +1,13 @@
 {
    "targetMap": [
         {
+            "product": "Cloudwatch",
+            "group": "Cloud NOC",
+            "url": "",
+            "service-now-group": "",
+            "jira-group": ""
+        },
+        {
             "product": "AppDynamics",
             "group": "Dynamic Performance Team",
             "url": "",
