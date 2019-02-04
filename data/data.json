@@ -1,6 +1,13 @@
 {
    "targetMap": [
         {
+            "product": "TriggerFlood",
+            "group": "Flood Control",
+            "url": "",
+            "service-now-group": "",
+            "jira-group": ""
+        },
+        {
             "product": "Cloudwatch",
             "group": "Cloud NOC",
             "url": "",

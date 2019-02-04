@@ -31,6 +31,8 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 	$scope.oncallData = {};
 
+	$scope.num_events = 5;
+
 	$http.get( '/on-call' ).then( resp => {
 		$scope.oncallData = resp.data;
 
@@ -369,7 +371,19 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 	$scope.triggerFlood = function( ) {
 
-		var postData = {};
+		console.log( '$scope.num_events: ' + $scope.num_events );
+		var postData = { 
+			"payload": {
+   	 		"properties": {
+   	   	    "Alert Condition": "CPU > 80% for 5 minutes",
+   	   	    "Severity": "High",
+   	   	    "Impacted Application": "Steelbrick",
+   	   	    "Details": "Agent on host app-host-central-1 had sustained CPU usage of 80% for more than 5 minutes."
+   	   	},
+   	   	"recipients": [{ "id": $scope.oncallData['TriggerFlood'].group.targetName }]
+   	   },
+   	   "num_events": $scope.num_events
+   	};
 
 
 		$http.post( '/triggerflood/', postData )

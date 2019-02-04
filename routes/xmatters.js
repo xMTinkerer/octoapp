@@ -29,6 +29,8 @@ router.get( '/recipients', function( req, res ) {
 
 router.get( '/on-call', function( req, res ) {
   
+    //console.log( 'Data: ' + JSON.stringify( targetMap ) );
+
    const groups = targetMap.map( item => { return item.group } );
 
    const respData = {};
@@ -39,6 +41,7 @@ router.get( '/on-call', function( req, res ) {
          respData[ targetMap[i].product ] = getShift( targetMap[i].group, onCallData );
       };
       
+
       
       res.status( 200 ).send( respData );
 
