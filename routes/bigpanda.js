@@ -17,37 +17,37 @@ router.post('/bigpanda', function( req, res ) {
         "check": "CPU overloaded"
     }
     
-    triggerAlert( payload );
+    createAlert( payload );
 
     res.status( 200 ).send( 'Done' );
     
     });
     
     
-    triggerAlert = function( payload ) {
+var createAlert = function( payload ) {
+
+    var APP = 'octoapp';
     
-        var APP = 'octoapp';
-        
-        const options = {
-            'uri': 'https://api.bigpanda.io/data/v2/alerts',
-            'method': 'POST',
-            'headers': {
-                "Content-Type": "application/json",
-	            "Authorization": "Bearer " + BIGPANDA_TOKEN
-            },
-            'json': true,
-            'body': payload
-        };
-        
-        var data;
+    const options = {
+        'uri': 'https://api.bigpanda.io/data/v2/alerts',
+        'method': 'POST',
+        'headers': {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + BIGPANDA_TOKEN
+        },
+        'json': true,
+        'body': payload
+    };
+    
+    var data;
 
-        request( options, ( err, res, body ) => {
-            if ( err )
-                console.log( err );
-        });
-        
+    request( options, ( err, res, body ) => {
+        if ( err )
+            console.log( err );
+    });
+    
 
-    }
+}
     
     
     

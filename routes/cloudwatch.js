@@ -17,28 +17,28 @@ router.post('/cloudwatch', function( req, res ) {
     
     });
     
-    createAlert = function( payload ) {
-           
-        const options = {
-            'uri': CLOUDWATCH_ENDPOINT,
-            'method': 'POST',
-            'headers': {
-                "Content-Type": "application/json",
-                "x-api-key": CLOUDWATCH_API_KEY   
-            },
-            'json': true,
-            'body': payload
-        };
+var createAlert = function( payload ) {
+       
+    const options = {
+        'uri': CLOUDWATCH_ENDPOINT,
+        'method': 'POST',
+        'headers': {
+            "Content-Type": "application/json",
+            "x-api-key": CLOUDWATCH_API_KEY   
+        },
+        'json': true,
+        'body': payload
+    };
 
-        var data;
+    var data;
 
-        request( options, ( err, res, body ) => {
-            if ( err )
-                console.log( err );
-            data = res;
-        });
+    request( options, ( err, res, body ) => {
+        if ( err )
+            console.log( err );
+        data = res;
+    });
 
-    }
+}
     
     
     

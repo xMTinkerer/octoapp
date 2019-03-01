@@ -11,21 +11,22 @@
   "license": "ISC",
   "dependencies": {
     "@google-cloud/logging": "^1.2.0",
-    "body-parser": "^1.15.2",
+    "body-parser": "^1.18.3",
     "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.3",
-    "ejs": "^2.5.5",
-    "express": "^4.16.3",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
     "express-session": "^1.15.6",
-    "newrelic": "^4.2.0",
-    "nodemon": "^1.17.5",
+    "extend": "^3.0.2",
+    "newrelic": "^4.13.0",
+    "nodemon": "^1.18.10",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "prom-client": "^10.0.3",
+    "prom-client": "^10.2.3",
     "promise": "^7.1.1",
     "querystring": "^0.2.0",
-    "request": "^2.87.0",
-    "winston": "^3.0.0-rc0"
+    "request": "^2.88.0",
+    "winston": "^3.2.1"
   }
 }

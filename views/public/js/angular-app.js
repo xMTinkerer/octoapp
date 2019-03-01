@@ -248,7 +248,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
  			"type":"Network",
  			"severity":3,
  			"description":"high network utilization in application A",
- 			"agent_time":"1411134582"
+ 			"agent_time":Date.now().toString()
  		};
 
 		$http.post( '/cowtipper/', postData )
@@ -259,7 +259,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 				finished: false
 			}
 
-			$timeout( function() { resetMessages( $scope.triggers.createAlert ) }, 10*1000 );
+			$timeout( function() { resetMessages( $scope.triggers.tripMoogsoft ) }, 10*1000 );
 
 		}, function() {
 			$scope.triggers.tripMoogsoft = { 

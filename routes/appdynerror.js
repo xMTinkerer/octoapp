@@ -28,7 +28,7 @@ router.post('/appdyn', function( req, res ) {
 });
 
 
-postAppDError = function( payload ) {
+var postAppDError = function( payload ) {
 
 	var APP = 'octoapp';
 
