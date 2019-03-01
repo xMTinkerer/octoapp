@@ -4,10 +4,10 @@ const router  = express.Router();
 
 const request = require( 'request' );
 
-const MOOG_USERNAME = process.env.MOOG_USERNAME;
-const MOOG_PASSWORD = process.env.MOOG_PASSWORD;
+const CLOUDWATCH_API_KEY = process.env.CLOUDWATCH_API_KEY;
+const CLOUDWATCH_ENDPOINT = process.env.CLOUDWATCH_ENDPOINT;
 
-router.post('/cowtipper', function( req, res ) {
+router.post('/cloudwatch', function( req, res ) {
     
     var body = req.body;
       
@@ -17,21 +17,14 @@ router.post('/cowtipper', function( req, res ) {
     
     });
     
-
-    
     createAlert = function( payload ) {
-    
-        var APP = 'octoapp';
-        
+           
         const options = {
-            'uri': 'https://xmatters.moogsoft.io/events/webhook_inboundoctoapp',
+            'uri': CLOUDWATCH_ENDPOINT,
             'method': 'POST',
-            'auth': {
-                'username': MOOG_USERNAME,
-                'password': MOOG_PASSWORD
-            },
             'headers': {
-                "Content-Type": "application/json"	            
+                "Content-Type": "application/json",
+                "x-api-key": CLOUDWATCH_API_KEY   
             },
             'json': true,
             'body': payload

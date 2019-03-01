@@ -31,6 +31,8 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 	$scope.oncallData = {};
 
+	$scope.num_events = 5;
+
 	$http.get( '/on-call' ).then( resp => {
 		$scope.oncallData = resp.data;
 
@@ -84,10 +86,45 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			"submitted": false,
 			"error": false,
 			"finished": false
-		}
+		},
+		"triggerFlood": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		},
+		"tripCloudwatch": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		},
 	}
 
+
+	$scope.tripCloudwatch = function() {
+
+		var postData = { };
+
+		$http.post( '/cloudwatch/', postData )
+		.then( function() { 
+			$scope.triggers.tripCloudwatch = { 
+				submitted: true,
+				error: false,
+				finished: false
+			}
+
+			$timeout( function() { resetMessages( $scope.triggers.tripCloudwatch ) }, 10*1000 );
+
+		}, function() {
+			$scope.triggers.tripCloudwatch = { 
+				submitted: false,
+				error: true,
+				finished: false
+			}
+		}); // error
+
+	}
 	
+
 	$scope.tripLog = function() {
 
 		var postData = { };
@@ -200,7 +237,19 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 	$scope.tripMoogsoft = function() {
 
-		var postData = {  };
+		var postData = {
+ 			"signature":"my_test_box:application:Network",
+ 			"source_id":"198.51.100",
+ 			"external_id":"id-1234",
+ 			"manager":"my_manager",
+ 			"source":"my_test_box",
+ 			"class":"application",
+ 			"agent_location":"my_agent_location",
+ 			"type":"Network",
+ 			"severity":3,
+ 			"description":"high network utilization in application A",
+ 			"agent_time":"1411134582"
+ 		};
 
 		$http.post( '/cowtipper/', postData )
 		.then( function() { 
@@ -312,6 +361,44 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 		}, function() {
 			$scope.triggers.makeMetrics = { 
+				submitted: false,
+				error: true,
+				finished: false
+			}
+		}); // error
+
+	}
+
+	$scope.triggerFlood = function( ) {
+
+		console.log( '$scope.num_events: ' + $scope.num_events );
+		var postData = { 
+			"payload": {
+   	 		"properties": {
+   	   	    "Alert Condition": "CPU > 80% for 5 minutes",
+   	   	    "Severity": "High",
+   	   	    "Impacted Application": "Steelbrick",
+   	   	    "Details": "Agent on host app-host-central-1 had sustained CPU usage of 80% for more than 5 minutes."
+   	   	},
+   	   	"recipients": [{ "id": $scope.oncallData['TriggerFlood'].group.targetName }]
+   	   },
+   	   "num_events": $scope.num_events
+   	};
+
+
+		$http.post( '/triggerflood/', postData )
+
+		.then( function() { 
+			$scope.triggers.triggerFlood = { 
+				submitted: true,
+				error: false,
+				finished: false
+			}
+
+			$timeout( function() { resetMessages( $scope.triggers.triggerFlood ) }, 10*1000 );
+
+		}, function() {
+			$scope.triggers.triggerFlood = { 
 				submitted: false,
 				error: true,
 				finished: false
