@@ -24,7 +24,7 @@ router.post('/triggerFlood', function( req, res ) {
 
 
 
-triggerFlood = function( postData ) {
+var triggerFlood = function( postData ) {
 
 	if( !FLOOD_ENDPOINT ){
     logger.error( 'Error: FLOOD_ENDPOINT not set, cannot initiate flood' );
