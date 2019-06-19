@@ -101,18 +101,61 @@
             }
         },
         "Dynatrace": {
+
             "endpoint": "https://advisors.na5.xmatters.com/api/integration/1/functions/40009abe-92e4-41ee-a3be-1ffa9ab2981c/triggers?apiKey=74c7e7b9-e072-4eda-8b08-3b1661698488",
             "basicAuth": false,
             "payload": {
-                "ImpactedEntity": "Error log pattern found on Process octoapp",
-                "PID": "-6871243565276870889",
-                "ProblemDetails": "<h3>RESOLVED Problem 889 in environment <i>euh17336</i></h3><hr><b>1 impacted infrastructure component</b><hr><br><div><span>Process</span><br><b><span style=\"color:#7dc540; font-size:120%\">octoapp</span></b><br><p style=\"margin-left:1em\"><b><span style=\"font-size:110%\">Error log pattern found</span></b><br>Pattern \"NullPointerException Problem\" found 2.8 times/min in \"/home/travisdepuy/octoapp/logs/dynatracer.log\".</p></div><hr><p><a href=\"https://mobilecontent.ruxit.com/common/ruxit-launch.html?url=https%3A%2F%2Feuh17336.live.dynatrace.com%2F%23problems%2Fproblemdetails%3Bpid%3D-6871243565276870889&amp;pid=-6871243565276870889&amp;tid=euh17336&amp;src=email&amp;app=ruxit\">Open in Browser</a></p>",
-                "ProblemID": "889",
-                "ProblemImpact": "INFRASTRUCTURE",
-                "ProblemTitle": "Error log pattern found",
-                "ProblemURL": "https://mobilecontent.ruxit.com/common/ruxit-launch.html?url=https%3A%2F%2Feuh17336.live.dynatrace.com%2F%23problems%2Fproblemdetails%3Bpid%3D-6871243565276870889&amp;pid=-6871243565276870889&amp;tid=euh17336&amp;src=email&amp;app=ruxit",
-                "State": "RESOLVED",
-                "Tags": ""
+                "impactedEntity": "Error log pattern found on Process octoapp",
+                "pid": "-6871243565276870889",
+                "problemDetailsHTML": "<h3>RESOLVED Problem 889 in environment <i>euh17336</i></h3><hr><b>1 impacted infrastructure component</b><hr><br><div><span>Process</span><br><b><span style=\"color:#7dc540; font-size:120%\">octoapp</span></b><br><p style=\"margin-left:1em\"><b><span style=\"font-size:110%\">Error log pattern found</span></b><br>Pattern \"NullPointerException Problem\" found 2.8 times/min in \"/home/travisdepuy/octoapp/logs/dynatracer.log\".</p></div><hr><p><a href=\"https://mobilecontent.ruxit.com/common/ruxit-launch.html?url=https%3A%2F%2Feuh17336.live.dynatrace.com%2F%23problems%2Fproblemdetails%3Bpid%3D-6871243565276870889&amp;pid=-6871243565276870889&amp;tid=euh17336&amp;src=email&amp;app=ruxit\">Open in Browser</a></p>",
+                "problemDetailsJSON": {
+                    "startTime":1559675100000,
+                    "endTime":-1,
+                    "displayName":"187",
+                    "impactLevel":"INFRASTRUCTURE",
+                    "status":"OPEN",
+                    "severityLevel":"ERROR",
+                    "commentCount":0,
+                    "tagsOfAffectedEntities":[],
+                    "rankedEvents":[{
+                        "startTime":1559675100000,
+                        "endTime":-1,
+                        "entityId":"PROCESS_GROUP_INSTANCE-13B2878C58DB5F56",
+                        "entityName":"octoapp",
+                        "severityLevel":"ERROR",
+                        "impactLevel":"INFRASTRUCTURE",
+                        "eventType":"PROCESS_LOG_ERROR",
+                        "status":"OPEN",
+                        "severities":[],
+                        "isRootCause":false
+                    }],
+                    "rankedImpacts":[{
+                        "entityId":"PROCESS_GROUP_INSTANCE-13B2878C58DB5F56",
+                        "entityName":"octoapp",
+                        "severityLevel":"ERROR",
+                        "impactLevel":"INFRASTRUCTURE",
+                        "eventType":"PROCESS_LOG_ERROR"
+                    }],
+                    "affectedCounts":{
+                        "INFRASTRUCTURE":1,
+                        "SERVICE":0,
+                        "APPLICATION":0,
+                        "ENVIRONMENT":0
+                    },
+                    "recoveredCounts":{
+                        "INFRASTRUCTURE":0,
+                        "SERVICE":0,
+                        "APPLICATION":0,
+                        "ENVIRONMENT":0
+                    },
+                    "hasRootCause":false
+                },
+                "problemID": "889",
+                "problemImpact": "INFRASTRUCTURE",
+                "problemTitle": "Error log pattern found",
+                "problemURL": "https://mobilecontent.ruxit.com/common/ruxit-launch.html?url=https%3A%2F%2Feuh17336.live.dynatrace.com%2F%23problems%2Fproblemdetails%3Bpid%3D-6871243565276870889&amp;pid=-6871243565276870889&amp;tid=euh17336&amp;src=email&amp;app=ruxit",
+                "state": "INFRASTRUCTURE",
+                "tags": ""
             }
         },
         "BigPanda": {
@@ -166,28 +209,41 @@
             "endpoint": "https://advisors.na5.xmatters.com/api/integration/1/functions/acd46733-795d-48ca-91b9-6d1066fdb339/triggers",
             "basicAuth": true,
             "payload": {
-                "properties": {
-                    "category": "Created",
-                    "created_at": "Mon Jul 02 2018 18:33:09 GMT-0000 (UTC)",
-                    "description": "Created Situation",
-                    "engagement_type": "Automatic",
-                    "first_event_time": "Unknown",
-                    "internal_priority": "Clear",
-                    "last_event_time": "Unknown",
-                    "last_state_change": "Mon Jul 02 2018 18:34:06 GMT-0000 (UTC)",
-                    "moderator_id": "2",
-                    "processes": "None",
-                    "services": "Compute, CRM, Commerce",
-                    "sit_id": "12",
-                    "sit_url": "https://rabidwilderness.moogsoft.io/#/situation/12",
-                    "status": "Opened",
-                    "story_id": "12",
-                    "superseded_by": null,
-                    "thread_created": true,
-                    "thread_name": "Support",
-                    "total_alerts": "0",
-                    "total_unique_alerts": "0"
-                }
+                "alert_id": 29,
+                "owner": 2,
+                "severity": "Minor",
+                "agent": "inboundoctoapp",
+                "manager": "my_manager",
+                "external_id":"id-1234",
+                "source_id":"198.51.100",
+                "source":"my_test_box",
+                "type":"Network",
+                "significance":"Collateral",
+                "agent_location":"my_agent_location",
+                "state":2,
+                "class":"application",
+                "count":12,
+                "category": "Created",
+                "created_at": "Mon Jul 02 2018 18:33:09 GMT-0000 (UTC)",
+                "description":"high network utilization in application A",
+                "update_custom_info":null,
+                "active_sig_list":"32, 33",
+                "int_last_event_time":"Tue Jun 04 2019 19:42:49 GMT-0000 (UTC)",
+                "first_event_time":"Fri Sep 19 2014 13:49:42 GMT-0000 (UTC)",
+                "last_event_time":"Mon Mar 17 51394 09:43:50 GMT-0000 (UTC)",
+                "last_state_change":"Tue May 14 2019 18:14:00 GMT-0000 (UTC)",
+                "moderator_id": "2",
+                "processes": "None",
+                "services": "Compute, CRM, Commerce",
+                "sit_id": "12",
+                "sit_url": "https://rabidwilderness.moogsoft.io/#/situation/12",
+                "status": "Opened",
+                "story_id": "12",
+                "superseded_by": null,
+                "thread_created": true,
+                "thread_name": "Support",
+                "total_alerts": "0",
+                "total_unique_alerts": "0"
             }
         },
         "New Relic": {
@@ -201,26 +257,16 @@
                 "policy_name": "Octoapp Policy",
                 "incident_url": "https://alerts.newrelic.com/accounts/395751/incidents/13722143",
                 "incident_acknowledge_url": "https://alerts.newrelic.com/accounts/395751/incidents/13722143/acknowledge",
-                "targets": [
-                {
-                    "id": "TransactionError",
-                    "name": "TransactionError query",
-                    "link": "https://insights.newrelic.com/accounts/395751/query?query=SELECT+count%28+%60error.class%60+%29+from+TransactionError+TIMESERIES",
-                    "labels": {},
-                    "product": "NRQL",
-                    "type": "Query"
-                }
-                ],
                 "version": "1.0",
-                "condition_id": 10487596,
-                "account_id": 395751,
-                "incident_id": 13722143,
+                "condition_id": "10487596",
+                "account_id": "395751",
+                "incident_id": "13722143",
                 "event_type": "INCIDENT",
                 "violation_chart_url": "http://gorgon.nr-assets.net/image/626b983d-75ee-42b8-bb33-2bdbd169ff08",
                 "account_name": "xMatters_1",
                 "details": "TransactionError query result is > 1",
                 "condition_name": "One error in 1 minute",
-                "timestamp": 1512512586040
+                "timestamp": "1512512586040"
             }
         },
         "Prometheus": {
@@ -279,9 +325,9 @@
             },
             "payload": {
                 "time": "2017-12-27T23:40:20.000Z",
-                "id": 3547219591,
+                "id": "3547219591",
                 "metric_name": "user",
-                "metric_value": 34.81011386470194,
+                "metric_value": "34.81011386470194",
                 "plugin_name": "Cpu",
                 "server_name": "octo-host",
                 "server_hostname": "octo-host",
@@ -293,7 +339,7 @@
                 "url": "https://server.pingdom.com/a/3547219591",
                 "sparkline_url": "https://server.pingdom.com/xmatters1/alerts/3547219591/sparkline.png",
                 "trigger": "when User meets or exceeds 3.0%",
-                "trigger_id": 202840551,
+                "trigger_id": "202840551",
                 "trigger_template_id": null,
                 "notes": ""
             }

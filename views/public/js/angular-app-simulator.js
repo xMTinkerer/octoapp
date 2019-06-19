@@ -35,13 +35,10 @@ octoapp.controller( 'octoSimController', function( $scope, $http, $timeout, $q, 
 		$http.get( '/simulator/' + tag.targetName + '/on-call' ).then( resp => {
 			$scope.oncallData[ tag.targetName ] = resp.data;
 		});
-		$scope.selectedRecipients.push(tag)
 	}
 
 	$scope.removeOnCall = function( tag ) {
 		delete $scope.oncallData[ tag.targetName ];
-		var idx = $scope.selectedRecipients.indexOf(tag);
-		$scope.selectedRecipients.splice(idx, 1);
 	}
 
 	$scope.runSimulation = () => {
@@ -59,7 +56,7 @@ octoapp.controller( 'octoSimController', function( $scope, $http, $timeout, $q, 
 
 
 		var recipients = $scope.selectedRecipients.map( item => { return item.targetName } );
-		
+
 		var postData = { 
 			"recipients": recipients, 
 			"application": $scope.selectedApp
