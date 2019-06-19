@@ -62,11 +62,11 @@ router.post( '/simulator', (req, res) => {
    }
 
 
-   const payload = simData[ appName ].payload;
+   const payload = {};
+   payload.properties = simData[ appName ].payload;
 
    payload.recipients = data.recipients;
    
-
    const options = {
      'uri': simData[ appName ].endpoint,
      'method': 'POST',

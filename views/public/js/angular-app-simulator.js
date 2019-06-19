@@ -56,7 +56,7 @@ octoapp.controller( 'octoSimController', function( $scope, $http, $timeout, $q, 
 
 
 		var recipients = $scope.selectedRecipients.map( item => { return item.targetName } );
-		
+
 		var postData = { 
 			"recipients": recipients, 
 			"application": $scope.selectedApp
