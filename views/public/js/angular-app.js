@@ -270,53 +270,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		}); // error
 
 	};
-
-	$scope.spikeCPU = function() {
-
-		
-		$scope.triggers.spikeCPU = {
-			submitted: true,
-			error: false,
-			finished: false
-		};
-
-		// Spike for 10 seconds
-		var postData = {
-			seconds: 10
-		};
-
-		$scope.spikeCPUseconds = postData.seconds;
-
-		//var deferred = $q.defer();
-
-		$http.post( '/spikecpu', postData )
-		.then( function() {  // success
-			$timeout( function() { 
-				$scope.triggers.spikeCPU = {
-					submitted: false, 
-					error: false, 
-					finished: true 
-				}
-			}, postData.seconds*1000);
-
-			$timeout( function() { resetMessages( $scope.triggers.spikeCPU ) }, (postData.seconds+10)*1000 );
-
-
-
-		}, function() {  // error
-			$timeout( function() { 
-				$scope.triggers.spikeCPU = {
-					submitted: false, 
-					error: true, 
-					finished: false 
-				}
-			}, postData.seconds*1000);
-
-			$timeout( function() { resetMessages( $scope.triggers.spikeCPU ) }, (postData.seconds+10)*1000 );
-		});
-
-	};
-
+	
 	$scope.makeerror = function( direction ) {
 
 		var postData = {};

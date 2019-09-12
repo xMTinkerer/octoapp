@@ -195,32 +195,7 @@
 
 
       </div>
-
-      <div class="row appGroup">
-        <div class="col-md-3 cellBorder">
-
-          <form name="cpuspike" class="form-inline">
-            <div class="form-group">
-              <button name="cpuspikebutton" ng-model="cpuspikebutton" ng-click="spikeCPU()" class="btn btn-primary">CPU Spike <span class="glyphicon glyphicon-equalizer"></span></button>
-            </div>
-            <br></br>
-            <div ng-messages="triggers.spikeCPU" role="alert">
-              <div ng-message="submitted">Starting spike for {{spikeCPUseconds}} seconds</div>
-              <div ng-message="finished">Finished spike</div>
-              <div ng-message="error">Error spiking CPU</div>
-            </div>
-          </form>
-        </div>
-        <div class="col-md-3 cellBorder">
-          <img src="/public/img/solarwinds-server-application-monitor.png" height="50" align="left">
-        </div>
-
-        <div class="col-md-3 cellBorder">
-          <on-call product="SolarWinds" oncalldata="oncallData['SolarWinds']"></on-call>
-        </div>
-
-      </div>
-
+      
       <div class="row appGroup">
         <div class="col-md-3 cellBorder">
           <form name="flood-control">
