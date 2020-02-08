@@ -1,6 +1,5 @@
 // APM libraries
 //require( './appdynamics_config' );
-const newrelic   = require( 'newrelic'    );
 const promClient = require( 'prom-client' );
 
 
@@ -109,7 +108,6 @@ app.use( require( './routes/bigpanda'     ) );
 app.use( require( './routes/stackdriver'  ) );
 app.use( require( './routes/stacktracer'  ) );
 app.use( require( './routes/metricmaker'  ) );
-app.use( require( './routes/error'        ) );
 app.use( require( './routes/appdynerror'  ) );
 app.use( require( './routes/xmatters'     ) );
 app.use( require( './routes/simulator'    ) );
@@ -126,7 +124,6 @@ app.locals.register        = register;
 app.locals.someMetric      = someMetric;
 app.locals.someMetricValue = someMetricValue;
 
-app.locals.newrelic        = newrelic;
 
 
 loggers.add( 'main', {
