@@ -8,6 +8,13 @@
             "jira-group": ""
         },
         {
+            "product": "Azure",
+            "group": "Cloud NOC",
+            "url": "",
+            "service-now-group": "",
+            "jira-group": ""
+        },
+        {
             "product": "Cloudwatch",
             "group": "Cloud NOC",
             "url": "",

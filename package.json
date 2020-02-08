@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "env $(cat .env) nodemon -e css,ejs,js,json --watch ."
+    "start": "env $(cat .env) node server.js -e css,ejs,js,json --watch ."
   },
   "author": "Travis DePuy",
   "license": "ISC",
@@ -20,7 +20,6 @@
     "express-session": "^1.16.2",
     "extend": "^3.0.2",
     "newrelic": "^4.13.1",
-    "nodemon": "^1.19.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "prom-client": "^10.2.3",

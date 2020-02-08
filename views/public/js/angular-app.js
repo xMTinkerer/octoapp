@@ -97,6 +97,11 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			"error": false,
 			"finished": false
 		},
+		"tripAzure": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		},
 	}
 
 
@@ -124,6 +129,31 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 	}
 	
+
+	$scope.tripAzure = function() {
+
+		var postData = { name: "azure" };
+
+		$http.post( '/azure/', postData )
+		.then( function() { 
+			$scope.triggers.tripAzure = { 
+				submitted: true,
+				error: false,
+				finished: false
+			}
+
+			$timeout( function() { resetMessages( $scope.triggers.tripAzure ) }, 10*1000 );
+
+		}, function() {
+			$scope.triggers.tripAzure = { 
+				submitted: false,
+				error: true,
+				finished: false
+			}
+		}); // error
+
+	}
+
 
 	$scope.tripLog = function() {
 
