@@ -11,3 +11,4 @@ sftp-config.jsonDISABLED
 hs*.log
 .env
 nodemon.json
+.DS_Store
