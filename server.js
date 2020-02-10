@@ -114,6 +114,7 @@ app.use( require( './routes/simulator'    ) );
 app.use( require( './routes/triggerflood' ) );
 app.use( require( './routes/cloudwatch'   ) );
 app.use( require( './routes/azure'   ) );
+app.use( require( './routes/datadog'   ) );
 
 app.use( '/public', express.static( __dirname + '/views/public' ) );
 

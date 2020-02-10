@@ -152,7 +152,7 @@
         <div class="col-md-3 cellBorder">
           <form name="azure">
             <button name="tripAzureButton" ng-model="tripAzureButton"
-              ng-click="tripAzure()" class="btn btn-primary">Trigger Azure<span class="glyphicon glyphicon-console"></span></button>
+              ng-click="tripAzure()" class="btn btn-primary">Trigger Azure <span class="glyphicon glyphicon-console"></span></button>
             <br></br>
             <div ng-messages="triggers.tripAzure" role="alert">
               <div ng-message="submitted">Successfully wrote to Azure Monitor</div>
@@ -170,6 +170,31 @@
         </div>
 
       </div>
+
+
+      <div class="row appGroup">
+        <div class="col-md-3 cellBorder">
+          <form name="datadog">
+            <button name="tripDatadogButton" ng-model="tripDatadogButton"
+              ng-click="tripDatadog()" class="btn btn-primary">Trigger Datadog <span class="glyphicon glyphicon-console"></span></button>
+            <br></br>
+            <div ng-messages="triggers.tripDatadog" role="alert">
+              <div ng-message="submitted">Successfully wrote to Datadog</div>
+              <div ng-message="error">Error writing to Datadog</div>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-3 cellBorder">
+          <img src="/public/img/datadog-logo.png" height="50" align="left">
+        </div>
+
+        <div class="col-md-3 cellBorder">
+          <on-call product="Datadog" oncalldata="oncallData['Datadog']"></on-call>
+        </div>
+
+      </div>
+
 
       <div class="row appGroup">
         <div class="col-md-3 cellBorder">

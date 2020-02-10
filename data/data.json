@@ -9,7 +9,14 @@
         },
         {
             "product": "Azure",
-            "group": "Cloud NOC",
+            "group": "Azure Engineers",
+            "url": "",
+            "service-now-group": "",
+            "jira-group": ""
+        },
+        {
+            "product": "Datadog",
+            "group": "Datadog",
             "url": "",
             "service-now-group": "",
             "jira-group": ""
