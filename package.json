@@ -19,6 +19,10 @@
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "extend": "^3.0.2",
+<<<<<<< HEAD
+=======
+    "newrelic": "^4.13.1",
+>>>>>>> 2d31e15561e1d59c9e03f10194d02f32b9e33229
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "prom-client": "^10.2.3",
