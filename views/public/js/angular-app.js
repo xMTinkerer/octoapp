@@ -97,6 +97,16 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			"error": false,
 			"finished": false
 		},
+		"tripAzure": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		},
+		"tripDatadog": {
+			"submitted": false,
+			"error": false,
+			"finished": false
+		},
 	}
 
 
@@ -125,6 +135,61 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 	}
 	
 
+	$scope.tripAzure = function() {
+
+		var postData = { name: "azure" };
+
+		$http.post( '/azure/', postData )
+		.then( function() { 
+			$scope.triggers.tripAzure = { 
+				submitted: true,
+				error: false,
+				finished: false
+			}
+
+			$timeout( function() { resetMessages( $scope.triggers.tripAzure ) }, 10*1000 );
+
+		}, function() {
+			$scope.triggers.tripAzure = { 
+				submitted: false,
+				error: true,
+				finished: false
+			}
+		}); // error
+
+	}
+
+
+	$scope.tripDatadog = function() {
+
+		var postData = {
+      "title": "Octoapp Exception: Shark!",
+      "text": "Shark exception in function swim.java",
+      "priority": "normal",
+      "alert_type": "error"
+    };
+
+		$http.post( '/datadog/', postData )
+		.then( function() { 
+			$scope.triggers.tripDatadog = { 
+				submitted: true,
+				error: false,
+				finished: false
+			}
+
+			$timeout( function() { resetMessages( $scope.triggers.tripDatadog ) }, 10*1000 );
+
+		}, function() {
+			$scope.triggers.tripDatadog = { 
+				submitted: false,
+				error: true,
+				finished: false
+			}
+		}); // error
+
+	}
+
+    
 	$scope.tripLog = function() {
 
 		var postData = { };

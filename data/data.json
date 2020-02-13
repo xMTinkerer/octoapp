@@ -8,6 +8,20 @@
             "jira-group": ""
         },
         {
+            "product": "Azure",
+            "group": "Azure Engineers",
+            "url": "",
+            "service-now-group": "",
+            "jira-group": ""
+        },
+        {
+            "product": "Datadog",
+            "group": "Datadog",
+            "url": "",
+            "service-now-group": "",
+            "jira-group": ""
+        },
+        {
             "product": "Cloudwatch",
             "group": "Cloud NOC",
             "url": "",
@@ -39,13 +53,6 @@
             "product": "Moogsoft",
             "group": "Cloud DevOps",
             "url": "",
-            "service-now-group": "",
-            "jira-group": ""
-        },
-        {
-            "product": "New Relic",
-            "group": "Web App Team",
-            "url": "https://rpm.newrelic.com/accounts/395751/applications/71686716",
             "service-now-group": "",
             "jira-group": ""
         },
@@ -244,29 +251,6 @@
                 "thread_name": "Support",
                 "total_alerts": "0",
                 "total_unique_alerts": "0"
-            }
-        },
-        "New Relic": {
-            "endpoint": "https://advisors.na5.xmatters.com/api/integration/1/functions/8e0d22d6-b705-465a-9f3b-5e4cae70325e/triggers?apiKey=ce51a133-5987-42f4-a362-66be33ab7fe8",
-            "basicAuth": false,
-            "payload": {
-                "owner": "",
-                "severity": "CRITICAL",
-                "policy_url": "https://alerts.newrelic.com/accounts/395751/policies/117337",
-                "current_state": "open",
-                "policy_name": "Octoapp Policy",
-                "incident_url": "https://alerts.newrelic.com/accounts/395751/incidents/13722143",
-                "incident_acknowledge_url": "https://alerts.newrelic.com/accounts/395751/incidents/13722143/acknowledge",
-                "version": "1.0",
-                "condition_id": "10487596",
-                "account_id": "395751",
-                "incident_id": "13722143",
-                "event_type": "INCIDENT",
-                "violation_chart_url": "http://gorgon.nr-assets.net/image/626b983d-75ee-42b8-bb33-2bdbd169ff08",
-                "account_name": "xMatters_1",
-                "details": "TransactionError query result is > 1",
-                "condition_name": "One error in 1 minute",
-                "timestamp": "1512512586040"
             }
         },
         "Prometheus": {
