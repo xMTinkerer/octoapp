@@ -12,3 +12,4 @@ hs*.log
 .env
 nodemon.json
 .DS_Store
+octoappcreds.json
