@@ -13,7 +13,7 @@ octoapp.directive( 'onCall', function() {
 	}
 });
 
-octoapp.directive( 'buttonValidator', function (){ 
+octoapp.directive( 'buttonValidator', function (){
 	return {
 	   require: 'ngModel',
 	   link: function(scope, elem, attr, ngModel) {
@@ -25,7 +25,7 @@ octoapp.directive( 'buttonValidator', function (){
 	   }
 	};
  });
- 
+
 octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 
@@ -115,8 +115,8 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		var postData = { };
 
 		$http.post( '/cloudwatch/', postData )
-		.then( function() { 
-			$scope.triggers.tripCloudwatch = { 
+		.then( function() {
+			$scope.triggers.tripCloudwatch = {
 				submitted: true,
 				error: false,
 				finished: false
@@ -125,7 +125,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.tripCloudwatch ) }, 10*1000 );
 
 		}, function() {
-			$scope.triggers.tripCloudwatch = { 
+			$scope.triggers.tripCloudwatch = {
 				submitted: false,
 				error: true,
 				finished: false
@@ -133,15 +133,15 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		}); // error
 
 	}
-	
+
 
 	$scope.tripAzure = function() {
 
 		var postData = { name: "azure" };
 
 		$http.post( '/azure/', postData )
-		.then( function() { 
-			$scope.triggers.tripAzure = { 
+		.then( function() {
+			$scope.triggers.tripAzure = {
 				submitted: true,
 				error: false,
 				finished: false
@@ -150,7 +150,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.tripAzure ) }, 10*1000 );
 
 		}, function() {
-			$scope.triggers.tripAzure = { 
+			$scope.triggers.tripAzure = {
 				submitted: false,
 				error: true,
 				finished: false
@@ -170,8 +170,8 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
     };
 
 		$http.post( '/datadog/', postData )
-		.then( function() { 
-			$scope.triggers.tripDatadog = { 
+		.then( function() {
+			$scope.triggers.tripDatadog = {
 				submitted: true,
 				error: false,
 				finished: false
@@ -180,7 +180,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.tripDatadog ) }, 10*1000 );
 
 		}, function() {
-			$scope.triggers.tripDatadog = { 
+			$scope.triggers.tripDatadog = {
 				submitted: false,
 				error: true,
 				finished: false
@@ -189,14 +189,14 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 	}
 
-    
+
 	$scope.tripLog = function() {
 
 		var postData = { };
 
 		$http.post( '/stackdriver/', postData )
 		.then( function() {
-			$scope.triggers.tripLog = { 
+			$scope.triggers.tripLog = {
 				submitted: true,
 				error: false,
 				finished: false
@@ -205,7 +205,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.tripLog ) }, 10*1000 );
 
 		}, function() {
-			$scope.triggers.tripLog = { 
+			$scope.triggers.tripLog = {
 				submitted: false,
 				error: true,
 				finished: false
@@ -218,8 +218,8 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		var postData = { };
 
 		$http.post( '/appdyn/', postData )
-		.then( function() { 
-			$scope.triggers.tripAppD = { 
+		.then( function() {
+			$scope.triggers.tripAppD = {
 				submitted: true,
 				error: false,
 				finished: false
@@ -228,7 +228,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.tripAppD ) }, 10*1000 );
 
 		}, function() {
-			$scope.triggers.tripAppD = { 
+			$scope.triggers.tripAppD = {
 				submitted: false,
 				error: true,
 				finished: false
@@ -256,8 +256,8 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		var postData = { };
 
 		$http.post( '/dynatracer/', postData )
-		.then( function() { 
-			$scope.triggers.tripDynatrace = { 
+		.then( function() {
+			$scope.triggers.tripDynatrace = {
 				submitted: true,
 				error: false,
 				finished: false
@@ -266,7 +266,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.tripDynatrace ) }, 10*1000 );
 
 		}, function() {
-			$scope.triggers.tripDynatrace = { 
+			$scope.triggers.tripDynatrace = {
 				submitted: false,
 				error: true,
 				finished: false
@@ -281,8 +281,8 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		};
 
 		$http.post( '/stacktracer/', postData )
-		.then( function() { 
-			$scope.triggers.tripStacktrace = { 
+		.then( function() {
+			$scope.triggers.tripStacktrace = {
 				submitted: true,
 				error: false,
 				finished: false
@@ -291,7 +291,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.tripStacktrace ) }, 10*1000 );
 
 		}, function() {
-			$scope.triggers.tripStacktrace = { 
+			$scope.triggers.tripStacktrace = {
 				submitted: false,
 				error: true,
 				finished: false
@@ -307,7 +307,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
  			"source_id":"198.51.100",
  			"external_id":"id-1234",
  			"manager":"my_manager",
- 			"source":"my_test_box",
+ 			"source":"octoapp:"+Math.floor(Math.random() * 100000),
  			"class":"application",
  			"agent_location":"my_agent_location",
  			"type":"Network",
@@ -317,8 +317,8 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
  		};
 
 		$http.post( '/cowtipper/', postData )
-		.then( function() { 
-			$scope.triggers.tripMoogsoft = { 
+		.then( function() {
+			$scope.triggers.tripMoogsoft = {
 				submitted: true,
 				error: false,
 				finished: false
@@ -327,7 +327,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.tripMoogsoft ) }, 10*1000 );
 
 		}, function() {
-			$scope.triggers.tripMoogsoft = { 
+			$scope.triggers.tripMoogsoft = {
 				submitted: false,
 				error: true,
 				finished: false
@@ -335,15 +335,15 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 		}); // error
 
 	};
-	
+
 	$scope.makeerror = function( direction ) {
 
 		var postData = {};
 
-		
+
 		$http.post( '/error/', postData )
-		.then( function() { 
-			$scope.triggers.makeError = { 
+		.then( function() {
+			$scope.triggers.makeError = {
 				submitted: true,
 				error: false,
 				finished: false
@@ -352,7 +352,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.makeError ) }, 10*1000 );
 
 		}, function() {
-			$scope.triggers.makeError = { 
+			$scope.triggers.makeError = {
 				submitted: false,
 				error: true,
 				finished: false
@@ -369,8 +369,8 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 		$http.post( '/metricmaker/', postData )
 
-		.then( function() { 
-			$scope.triggers.makeMetrics = { 
+		.then( function() {
+			$scope.triggers.makeMetrics = {
 				submitted: true,
 				error: false,
 				finished: false
@@ -379,7 +379,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.makeMetrics ) }, 10*1000 );
 
 		}, function() {
-			$scope.triggers.makeMetrics = { 
+			$scope.triggers.makeMetrics = {
 				submitted: false,
 				error: true,
 				finished: false
@@ -391,7 +391,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 	$scope.triggerFlood = function( ) {
 
 		console.log( '$scope.num_events: ' + $scope.num_events );
-		var postData = { 
+		var postData = {
 			"payload": {
    	 		"properties": {
    	   	    "Alert Condition": "CPU > 80% for 5 minutes",
@@ -407,8 +407,8 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 
 		$http.post( '/triggerflood/', postData )
 
-		.then( function() { 
-			$scope.triggers.triggerFlood = { 
+		.then( function() {
+			$scope.triggers.triggerFlood = {
 				submitted: true,
 				error: false,
 				finished: false
@@ -417,7 +417,7 @@ octoapp.controller( 'octoController', function( $scope, $http, $timeout ){
 			$timeout( function() { resetMessages( $scope.triggers.triggerFlood ) }, 10*1000 );
 
 		}, function() {
-			$scope.triggers.triggerFlood = { 
+			$scope.triggers.triggerFlood = {
 				submitted: false,
 				error: true,
 				finished: false
