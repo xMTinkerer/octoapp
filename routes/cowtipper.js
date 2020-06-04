@@ -6,24 +6,25 @@ const request = require( 'request' );
 
 const MOOG_USERNAME = process.env.MOOG_USERNAME;
 const MOOG_PASSWORD = process.env.MOOG_PASSWORD;
+const MOOG_ENDPOINT = process.env.MOOG_ENDPOINT;
 
 router.post('/cowtipper', function( req, res ) {
 
     var payload = req.body;
 
     createAlert( payload );
-    
+
     res.status( 200 ).send( 'Done' );
-    
+
 });
-    
+
 
 var createAlert = function( payload ) {
 
     var APP = 'octoapp';
 
     const options = {
-        'uri': 'https://xmatters.moogsoft.io/events/webhook_inboundoctoapp',
+        'uri': MOOG_ENDPOINT,
         'method': 'POST',
         'auth': {
             'username': MOOG_USERNAME,
@@ -45,8 +46,8 @@ var createAlert = function( payload ) {
     });
 
 }
-    
-    
-    
+
+
+
     module.exports = router;
-    
+
